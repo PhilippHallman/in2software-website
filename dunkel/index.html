@@ -350,6 +350,34 @@ footer{border-top-color:var(--line)}
 .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
+/* ---------- mobile ---------- */
+html{scroll-padding-top:80px}
+@media(max-width:640px){
+  html{scroll-padding-top:68px}
+  .nav{height:60px}
+  .logo{font-size:19px;gap:8px}
+  .logo .mark{width:30px;height:30px}
+  .nav .btn{padding:10px 14px;font-size:14px;white-space:nowrap}
+  .nav .nav-long{display:none}
+  .hero{padding:52px 0 44px}
+  .hero .wrap{gap:36px}
+  .hero p.lead{margin:20px 0 26px}
+  .cta-row .btn{width:100%;justify-content:center}
+  .trust{margin-top:26px;align-items:flex-start}
+  .rig{aspect-ratio:auto;height:auto;max-width:100%}
+  .rig svg{display:none}
+  .term{position:static;transform:none;width:100%;min-height:0;font-size:12.5px}
+  .rig2 .cw{height:400px}
+  .task .meta{flex-wrap:wrap;gap:4px 14px}
+  .big{font-size:clamp(88px,26vw,120px)}
+  .flow .card{grid-template-columns:1fr;gap:12px}
+  .flow code{justify-self:start}
+  .sec-head{margin-bottom:36px}
+  section{padding:64px 0}
+  .band .photo{min-height:280px}
+  form{padding:24px 20px}
+}
 </style>
 </head>
 <body>
@@ -365,7 +393,7 @@ footer{border-top-color:var(--line)}
       <li><a href="#ablauf">Ablauf</a></li>
       <li><a href="#faq">Fragen</a></li>
     </ul>
-    <a class="btn btn-primary" href="#kontakt">Erstgespräch anfragen</a>
+    <a class="btn btn-primary" href="#kontakt">Erstgespräch<span class="nav-long"> anfragen</span></a>
   </div>
 </header>
 
