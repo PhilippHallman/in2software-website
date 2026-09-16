@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>In2Software — Ein Chatfenster ist kein Arbeitsplatz</title>
 <meta name="description" content="Wir richten Unternehmen einen KI-Arbeitsplatz ein, der an ihre eigenen Systeme angeschlossen ist – und betreuen ihn monatlich, damit er wirklich benutzt wird.">
-<link rel="icon" type="image/svg+xml" href="brand/favicon.svg">
-<link rel="stylesheet" href="fonts.css">
+<link rel="icon" type="image/svg+xml" href="../brand/favicon.svg">
+<link rel="stylesheet" href="../fonts.css">
 <style>
 :root{
   --ink:#0A0E17; --ink2:#0F1522; --panel:#141B2B; --panel2:#1A2336; --line:rgba(255,255,255,.08);
@@ -346,81 +346,6 @@ input,select,textarea{background:#0D1629}
 .big{background:linear-gradient(180deg,#fff,rgba(174,185,207,.55));-webkit-background-clip:text;background-clip:text}
 footer{border-top-color:var(--line)}
 
-
-/* ---------- v2: helles Design (Whitemode) ---------- */
-:root{--ink:#F6F9FE;--ink2:#EEF4FC;--panel:#FFFFFF;--panel2:#F3F7FD;--line:rgba(20,50,90,.10);--text:#0C1324;--muted:#4F5B73;--dim:#7B879E;--amber:#2A8DEE;--amber2:#5CB2FA;--copper:#1B6FC4;--live:#1FA871;--danger:#E0674F;--peach:#F29A5F}
-body{background:radial-gradient(1200px 700px at 80% -10%,rgba(108,188,255,.22),transparent 60%),radial-gradient(900px 600px at 0% 20%,rgba(255,185,138,.16),transparent 60%),var(--ink);color:var(--text)}
-header{background:rgba(246,249,254,.78);border-bottom:1px solid var(--line)}
-.nav ul{color:var(--muted)} .nav ul a:hover{color:var(--text)}
-.logo{color:var(--text)}
-.hero-bg{background:radial-gradient(760px 520px at 18% 10%,rgba(108,188,255,.28),transparent 62%),radial-gradient(620px 460px at 88% 28%,rgba(255,185,138,.22),transparent 60%),radial-gradient(700px 500px at 60% 100%,rgba(255,159,178,.12),transparent 60%)}
-.aurora{opacity:.7} .sparkles{display:none}
-.hero h1{text-shadow:none}
-.hero h1 .strike::after{background:#F29A5F}
-p.lead{color:var(--muted)}
-.eyebrow{background:#fff;border:1px solid var(--line);color:var(--text);box-shadow:0 1px 0 rgba(255,255,255,.8) inset,0 6px 20px rgba(20,50,90,.08)}
-.eyebrow::before{background:#0C1324;color:#fff}
-.btn-ghost{background:#fff;border-color:var(--line);color:var(--text)}
-.btn-ghost:hover{border-color:rgba(20,50,90,.25);background:#fff}
-.btn-primary{color:#fff;background:linear-gradient(180deg,#5CB2FA 0%,#2A8DEE 55%,#1B6FC4 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -2px 0 rgba(8,52,100,.35),0 10px 28px rgba(42,141,238,.35)}
-.btn-primary:hover{background:linear-gradient(180deg,#6ABCFF 0%,#3598F5 55%,#2A8DEE 100%)}
-.card,.step,.tl,.limits li,.task,.tile{background:#fff;border-color:var(--line);box-shadow:0 10px 30px rgba(20,50,90,.06)}
-.card::before{background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent)}
-.ticker{background:#fff;border-color:var(--line)} .ticker span{color:var(--muted)} .ticker span::before{color:var(--amber)}
-.big{background:linear-gradient(180deg,#0C1324,rgba(12,19,36,.55));-webkit-background-clip:text;background-clip:text;color:transparent}
-.src{color:var(--dim)}
-.vs .good{background:linear-gradient(180deg,rgba(108,188,255,.16),rgba(108,188,255,.05));border-color:rgba(42,141,238,.35)}
-.vs ul{color:var(--muted)}
-.step .n,.tl .n,.task .q,.limits li .k,.steps-list .n{color:var(--amber)}
-.step p,.tl p,.card p,.bau p,.flow p,.limits li p,.task span,details p,.person p{color:var(--muted)}
-.step.here,.task[aria-selected="true"]{background:linear-gradient(180deg,rgba(108,188,255,.18),rgba(108,188,255,.05));border-color:rgba(42,141,238,.35);backdrop-filter:none}
-.step .tag,.step.here .n,.task[aria-selected="true"] .q{color:var(--copper)}
-.step.hype{opacity:.85}
-.bau .ico,.flow code{background:linear-gradient(180deg,rgba(108,188,255,.22),rgba(108,188,255,.10));border-color:rgba(42,141,238,.3);color:var(--copper);box-shadow:none}
-.bau .vis,.cw .in .box,input,select,textarea{background:#F3F7FD;color:var(--text);border-color:var(--line)}
-.bau .vis b{color:var(--text)} .bau .vis .a{color:var(--copper)} .bau .vis .g{color:var(--live)}
-.tab{background:#fff;border-color:var(--line);color:var(--muted)}
-.tab[aria-selected="true"]{background:linear-gradient(180deg,#5CB2FA,#2A8DEE);color:#fff;border-color:transparent}
-.flow .hitl{color:var(--dim)}
-.photo{border-color:var(--line)} .photo .cap{background:linear-gradient(180deg,transparent,rgba(12,19,36,.85));color:#E6ECF5} .photo .cap b{color:#fff}
-.limits li b{color:var(--text)}
-summary{color:var(--text)} summary::after{color:var(--amber)} details{border-color:var(--line)}
-.form-sec{background:radial-gradient(800px 500px at 20% 20%,rgba(108,188,255,.18),transparent 60%),radial-gradient(700px 500px at 90% 90%,rgba(255,185,138,.18),transparent 60%),var(--ink2)}
-form{background:#fff;border-color:var(--line);box-shadow:0 20px 50px rgba(20,50,90,.10)}
-label{color:var(--muted)} .fine{color:var(--dim)}
-.done{border-color:rgba(31,168,113,.4);background:rgba(31,168,113,.08);color:var(--text)}
-footer{color:var(--dim);border-top-color:var(--line)} footer a:hover{color:var(--text)}
-/* Terminal & Cowork bleiben dunkel (Kontrast) */
-.term,.cw{background:#0C1324;border-color:rgba(20,50,90,.25);box-shadow:0 30px 80px rgba(20,50,90,.25)}
-.term pre{color:#AEB9CF} .term .cmd{color:#6CBCFF} .term .ok{color:#3DDC97}
-.cw .u{background:rgba(108,188,255,.16);border-color:rgba(108,188,255,.35);color:#F3F6FC}
-.cw .st{color:#AEB9CF} .cw .st .r{color:#F3F6FC} .cw .res b{color:#F3F6FC} .cw .res .n{color:#AEB9CF}
-.cw .in .box{background:#0A0E17;color:#F3F6FC} .cw .in .box .ph{color:#7B879E}
-.node{fill:#fff;stroke:rgba(20,50,90,.18)} .nlabel{fill:#0C1324} .nsub{fill:#4F5B73}
-.wire{stroke:rgba(20,50,90,.18)} .wire.on{stroke:var(--amber);filter:drop-shadow(0 0 6px rgba(42,141,238,.5))}
-.rig2 .hn{background:#fff;border-color:var(--line)} .rig2 .hn b{color:var(--text)} .rig2 .hn small{color:var(--muted)}
-.rig2 .hn.lit{border-color:rgba(42,141,238,.5);box-shadow:0 10px 40px rgba(42,141,238,.25)}
-.trust{color:var(--muted)} .trust .dots span{background:#fff;border-color:var(--ink);color:var(--copper)}
-.hero-grid{display:none}
-
-
-/* ---------- v2: dunkle Komponenten als Kontrast ---------- */
-.vs .good,.bau .card,.step.here,.task[aria-selected="true"],.limits li,form,.rig2 .hn.lit{background:linear-gradient(180deg,#16213A,#0F1830);border-color:rgba(108,188,255,.25);color:#F3F6FC;box-shadow:0 18px 44px rgba(12,19,36,.28)}
-.vs .good h3,.bau .card h3,.step.here h3,.task[aria-selected="true"] b,.limits li b,form label,.rig2 .hn.lit b{color:#F3F6FC}
-.vs .good ul,.bau .card p,.step.here p,.task[aria-selected="true"] span,.limits li p,.rig2 .hn.lit small{color:#AEB9CF}
-.step.here .n,.step.here .tag,.task[aria-selected="true"] .q,.limits li .k{color:#6CBCFF}
-.task[aria-selected="true"] .meta i{color:#3DDC97} .task .bar{background:rgba(255,255,255,.08)}
-.bau .ico{background:linear-gradient(180deg,rgba(108,188,255,.28),rgba(108,188,255,.10));border-color:rgba(108,188,255,.35);color:#DDF3FF}
-.bau .vis{background:#0A0E17;border-color:rgba(255,255,255,.08);color:#7B879E} .bau .vis b{color:#F3F6FC}
-form input,form select,form textarea{background:#0A0E17;color:#F3F6FC;border-color:rgba(255,255,255,.12)}
-form .fine{color:#7B879E}
-form .btn-primary{color:#061A2B;background:linear-gradient(180deg,#A6D8FF 0%,#5CB2FA 48%,#2A8DEE 100%)}
-.form-sec h2,.form-sec .lead,.steps-list li{color:inherit}
-footer{background:#0C1324;color:#AEB9CF;border-top:0;padding-top:56px}
-footer .logo{color:#F3F6FC} footer a:hover{color:#fff}
-.ticker{background:#0C1324;border-color:transparent} .ticker span{color:#DDE6F5} .ticker span::before{color:#6CBCFF}
-.vs .good li::before{color:#3DDC97}
-
 /* reveal */
 .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
@@ -668,11 +593,11 @@ footer .logo{color:#F3F6FC} footer a:hover{color:#fff}
 <section class="band">
   <div class="wrap">
     <div class="photo rv">
-      <img src="img/arbeitsplatz.jpg" alt="Arbeitsplatz mit Laptop und Notizen" loading="lazy">
+      <img src="../img/arbeitsplatz.jpg" alt="Arbeitsplatz mit Laptop und Notizen" loading="lazy">
       <div class="cap"><b>Auf eurem Rechner, nicht in irgendeiner Cloud-Oberfläche</b>Dateien und Firmenwissen bleiben bei euch. Nur die Texte einer Aufgabe gehen verschlüsselt an das Modell – im Geschäftstarif ohne Training, mit Auftragsverarbeitungsvertrag.</div>
     </div>
     <div class="photo rv">
-      <img src="img/team.jpg" alt="Team bei der Arbeit" loading="lazy">
+      <img src="../img/team.jpg" alt="Team bei der Arbeit" loading="lazy">
       <div class="cap"><b>Eure Leute arbeiten damit</b>Wir verkaufen keine KI, die allein arbeitet. Wir verkaufen Menschen, die mit KI deutlich schneller sind – kontrolliert wird weiter von Menschen.</div>
     </div>
   </div>
@@ -772,7 +697,7 @@ footer .logo{color:#F3F6FC} footer a:hover{color:#fff}
   <div class="wrap">
     <div class="row">
       <div><div class="logo"><svg class="mark" width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lqBase" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9DCFF"/><stop offset=".55" stop-color="#4FAAF9"/><stop offset="1" stop-color="#1B82E8"/></linearGradient><linearGradient id="lqRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".45" stop-color="#fff" stop-opacity=".15"/><stop offset="1" stop-color="#fff" stop-opacity=".7"/></linearGradient><radialGradient id="lqShade" cx=".78" cy=".85" r=".7"><stop offset="0" stop-color="#0B3A66" stop-opacity=".22"/><stop offset="1" stop-color="#0B3A66" stop-opacity="0"/></radialGradient><radialGradient id="lqKnob" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#E4F4FF"/><stop offset="1" stop-color="#A9D6F7"/></radialGradient><linearGradient id="lqTrack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2A40" stop-opacity=".92"/><stop offset="1" stop-color="#070C16" stop-opacity=".92"/></linearGradient><filter id="lqGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4"/></filter><filter id="lqSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.6"/></filter></defs><rect x="4" y="6" width="56" height="56" rx="16" fill="#2A8DEE" fill-opacity=".7" filter="url(#lqGlow)"/><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#lqBase)"/><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#lqShade)"/><ellipse cx="24.16" cy="12.96" rx="16.8" ry="5.6000000000000005" fill="#fff" fill-opacity=".55" filter="url(#lqSoft)"/><rect x="4.9" y="4.9" width="54.2" height="54.2" rx="15.1" fill="none" stroke="url(#lqRim)" stroke-width="1.6"/><rect x="6.34" y="6.34" width="51.32" height="51.32" rx="13.66" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1"/><rect x="12" y="22" width="40" height="20" rx="10" fill="url(#lqTrack)"/><rect x="12.7" y="22.7" width="38.6" height="18.6" rx="9.3" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1"/><ellipse cx="24" cy="25.5" rx="8" ry="1.6" fill="#fff" fill-opacity=".14"/><circle cx="42" cy="33" r="7.4" fill="#0A0E17" fill-opacity=".35" filter="url(#lqSoft)"/><circle cx="42" cy="32" r="7" fill="url(#lqKnob)"/><circle cx="42" cy="32" r="6.5" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width=".9"/><ellipse cx="40.6" cy="29.2" rx="3.2" ry="1.7" fill="#fff" fill-opacity=".85"/><path d="M37.2 35.2a6 6 0 0 0 9.6 0" stroke="#7CC4FF" stroke-opacity=".7" stroke-width=".9" fill="none"/></svg><span class="word">In<span class="two">2</span>Software</span></div><div style="margin-top:10px">KI-Arbeitsplätze für inhabergeführte Unternehmen · Kiel · remote</div></div>
-      <ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="mailto:kontakt@in2software.de">kontakt@in2software.de</a></li></ul>
+      <ul><li><a href="../impressum.html">Impressum</a></li><li><a href="../datenschutz.html">Datenschutz</a></li><li><a href="mailto:kontakt@in2software.de">kontakt@in2software.de</a></li></ul>
     </div>
     <p class="disclaimer">In2Software · Philipp Hallmann · Holtenauer Straße 59 · 24105 Kiel · kontakt@in2software.de. Dieses Angebot richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB. Ergebnisse hängen von der Umsetzung im Unternehmen ab; wir versprechen keine bestimmten Einsparungen. Anthropic, Meta, Google und weitere genannte Marken sind Eigentum ihrer jeweiligen Inhaber; es besteht keine Partnerschaft.</p>
   </div>
