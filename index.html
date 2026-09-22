@@ -277,6 +277,8 @@ textarea{min-height:110px;resize:vertical}
 select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 15px) 50%;background-size:5px 5px;background-repeat:no-repeat}
 .fine{font-size:12.5px;color:var(--dim)}
 .done{display:none;padding:22px;border:1px solid rgba(61,220,151,.4);background:rgba(61,220,151,.08);border-radius:12px;color:var(--text)}
+.hp{display:none!important}
+.done.fail{border-color:rgba(255,120,120,.45);background:rgba(255,120,120,.08)}
 .done-alt{display:grid;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
 .done-alt textarea{min-height:0;font-family:var(--mono);font-size:13px;line-height:1.55}
 .done-alt .btn{justify-self:start;padding:10px 16px;font-size:14px}
@@ -417,6 +419,7 @@ footer{color:var(--dim);border-top-color:var(--line)} footer a:hover{color:var(-
 .bau .vis{background:#0A0E17;border-color:rgba(255,255,255,.08);color:#7B879E} .bau .vis b{color:#F3F6FC}
 form input,form select,form textarea{background:#0A0E17;color:#F3F6FC;border-color:rgba(255,255,255,.12)}
 form .fine{color:#7B879E}
+form .done{color:#F3F6FC}form .done a:not(.btn){color:#A6D8FF}form .done.fail{border-color:rgba(255,120,120,.45);background:rgba(255,120,120,.10)}
 form .btn-primary{color:#061A2B;background:linear-gradient(180deg,#A6D8FF 0%,#5CB2FA 48%,#2A8DEE 100%)}
 .form-sec h2,.form-sec .lead,.steps-list li{color:inherit}
 footer{background:#0C1324;color:#AEB9CF;border-top:0;padding-top:56px}
@@ -778,7 +781,11 @@ html{scroll-padding-top:80px}
         <li><span class="n">03</span><span>Im Gespräch rechnen wir gemeinsam aus, was die verlorene Zeit heute kostet.</span></li>
       </ul>
     </div>
-    <form id="lead" action="mailto:kontakt@in2software.de" method="post" enctype="text/plain">
+    <form id="lead" action="https://api.web3forms.com/submit" method="post">
+      <input type="hidden" name="access_key" value="WEB3FORMS-KEY-EINTRAGEN">
+      <input type="hidden" name="subject" value="Erstgespräch – Anfrage über in2software.de">
+      <input type="hidden" name="from_name" value="Website in2software.de">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="f2">
         <label>Name<input name="name" type="text" required autocomplete="name"></label>
         <label>Unternehmen<input name="firma" type="text" required autocomplete="organization"></label>
@@ -791,17 +798,18 @@ html{scroll-padding-top:80px}
       <label>Womit arbeitet ihr täglich?
         <select name="systeme"><option value="">Bitte wählen</option><option>Google Workspace / Drive</option><option>Microsoft 365</option><option>Shopify / Shopware + Werbekonten</option><option>HubSpot / Pipedrive / Notion</option><option>Schnittprogramme (Premiere, DaVinci, CapCut)</option><option>Anderes</option></select>
       </label>
-      <button class="btn btn-primary" type="submit">Anfrage im Mailprogramm öffnen →</button>
-      <div class="fine">Der Knopf öffnet euer E-Mail-Programm mit der fertigen Anfrage – <b>abgeschickt wird sie von euch</b>. Lieber direkt: <a href="mailto:kontakt@in2software.de">kontakt@in2software.de</a>. Kein Newsletter, keine Weitergabe. Wir nutzen die Angaben nur, um das Gespräch vorzubereiten.</div>
+      <button class="btn btn-primary" type="submit" id="send">Erstgespräch anfragen →</button>
+      <div class="fine">Die Anfrage läuft über den Formulardienst Web3Forms (Server in den USA) an <a href="mailto:kontakt@in2software.de">kontakt@in2software.de</a> – Details in der <a href="datenschutz.html#kontakt">Datenschutzerklärung</a>. Lieber ohne Formular? Schreibt direkt an die Adresse. Kein Newsletter, kein Verkauf von Daten. Wir nutzen die Angaben nur, um das Gespräch vorzubereiten.</div>
       <div class="done" id="done">
-        <b>Der Entwurf liegt jetzt in eurem E-Mail-Programm.</b> Dort einmal auf „Senden" drücken – erst dann ist die Anfrage bei uns. Wir antworten innerhalb eines Werktags mit einem Terminvorschlag. Bis dahin: Zählt einmal grob, wie viele Stunden pro Woche in den genannten Aufgaben stecken – das ist die erste Zahl, die wir brauchen.
+        <b>Anfrage übermittelt.</b> Wir antworten innerhalb eines Werktags mit einem Terminvorschlag. Bis dahin: Zählt einmal grob, wie viele Stunden pro Woche in den genannten Aufgaben stecken – das ist die erste Zahl, die wir brauchen.
+      </div>
+      <div class="done fail" id="fail">
+        <b>Das Senden hat nicht geklappt.</b> Bitte schickt uns den Text direkt – der Knopf unten öffnet euer E-Mail-Programm, oder ihr kopiert ihn an <a href="mailto:kontakt@in2software.de">kontakt@in2software.de</a>.
         <div class="done-alt">
-          <div class="fine">Es ist kein Fenster aufgegangen? Dann kopiert den Text und schickt ihn an <a href="mailto:kontakt@in2software.de">kontakt@in2software.de</a>.</div>
           <textarea id="draft" rows="9" readonly aria-label="Text der Anfrage zum Kopieren"></textarea>
-          <button class="btn btn-ghost" type="button" id="copy">Text kopieren</button>
+          <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn btn-ghost" id="mailto" href="mailto:kontakt@in2software.de">Im Mailprogramm öffnen</a><button class="btn btn-ghost" type="button" id="copy">Text kopieren</button></div>
         </div>
       </div>
-      <noscript><div class="fine">Ohne JavaScript öffnet der Knopf direkt euer E-Mail-Programm. Klappt das nicht, schreibt bitte an <a href="mailto:kontakt@in2software.de">kontakt@in2software.de</a>.</div></noscript>
     </form>
   </div>
 </section>
@@ -922,27 +930,42 @@ document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click'
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rv').forEach(function(x){io.observe(x)});
 setTimeout(function(){document.querySelectorAll('.rv').forEach(function(x){x.classList.add('in')})},2500);
-// form (kein Backend): prüfen, Mailentwurf öffnen, Text zum Kopieren bereitstellen.
-// Kein "abgeschickt" behaupten - gesendet wird im Mailprogramm des Interessenten.
-document.getElementById('lead').addEventListener('submit',function(e){
-  e.preventDefault();
-  var f=e.target; if(!f.checkValidity()){f.reportValidity();return}
-  var d=new FormData(f),
-      body='Name: '+d.get('name')+'\nUnternehmen: '+d.get('firma')+'\nE-Mail: '+d.get('email')+'\nTelefon: '+d.get('tel')+'\nSysteme: '+d.get('systeme')+'\n\nZeitfresser:\n'+d.get('zeitfresser'),
-      subject='Erstgespräch – '+d.get('firma'),
-      done=document.getElementById('done'),
-      draft=document.getElementById('draft');
-  draft.value='An: kontakt@in2software.de\nBetreff: '+subject+'\n\n'+body;
-  done.style.display='block';
-  done.scrollIntoView({behavior:'smooth',block:'center'});
-  window.location.href='mailto:kontakt@in2software.de?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
-});
+// form: sendet per fetch an Web3Forms (-> kontakt@in2software.de).
+// "Angekommen" nur nach bestaetigter Antwort; sonst Text + mailto als Ausweg.
+(function(){
+  var f=document.getElementById('lead'); if(!f) return;
+  var send=document.getElementById('send'), done=document.getElementById('done'), fail=document.getElementById('fail'),
+      draft=document.getElementById('draft'), mail=document.getElementById('mailto'), label=send.textContent;
+  function text(d){return 'Name: '+d.get('name')+'\nUnternehmen: '+d.get('firma')+'\nE-Mail: '+d.get('email')+'\nTelefon: '+d.get('tel')+'\nSysteme: '+d.get('systeme')+'\n\nZeitfresser:\n'+d.get('zeitfresser')}
+  function show(el){done.style.display='none';fail.style.display='none';el.style.display='block';el.scrollIntoView({behavior:'smooth',block:'center'})}
+  function fallback(d){
+    var subject='Erstgespräch – '+d.get('firma'), body=text(d);
+    draft.value='An: kontakt@in2software.de\nBetreff: '+subject+'\n\n'+body;
+    mail.href='mailto:kontakt@in2software.de?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    send.disabled=false; send.textContent=label; show(fail);
+  }
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){f.reportValidity();return}
+    var d=new FormData(f);
+    if(d.get('botcheck')) return;
+    if(/EINTRAGEN/.test(d.get('access_key'))){fallback(d);return}
+    d.set('subject','Erstgespräch – '+d.get('firma'));
+    send.disabled=true; send.textContent='Wird gesendet …';
+    var ctl=window.AbortController?new AbortController():null, t=setTimeout(function(){if(ctl)ctl.abort()},15000);
+    fetch(f.action,{method:'POST',headers:{'Accept':'application/json'},body:d,signal:ctl?ctl.signal:undefined})
+      .then(function(r){return r.json().then(function(j){return r.ok&&j.success===true})})
+      .then(function(ok){clearTimeout(t);if(ok){f.querySelectorAll('input,textarea,select').forEach(function(x){if(x.type!=='hidden'&&x.type!=='checkbox')x.value=''});send.textContent='Gesendet';show(done)}else{fallback(d)}})
+      .catch(function(){clearTimeout(t);fallback(d)});
+  });
+})();
 document.getElementById('copy').addEventListener('click',function(){
   var draft=document.getElementById('draft'), b=this;
-  function ok(){b.textContent='Kopiert'; setTimeout(function(){b.textContent='Text kopieren'},2200)}
+  function say(m){b.textContent=m; setTimeout(function(){b.textContent='Text kopieren'},2600)}
+  function manual(){draft.focus();draft.select();var c=false;try{c=document.execCommand('copy')}catch(err){}say(c?'Kopiert':'Markiert – bitte selbst kopieren')}
   if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(draft.value).then(ok,function(){draft.select();ok()});
-  } else { draft.select(); try{document.execCommand('copy')}catch(err){} ok() }
+    navigator.clipboard.writeText(draft.value).then(function(){say('Kopiert')},manual);
+  } else { manual() }
 });
 </script>
 </body>
