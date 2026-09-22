@@ -296,21 +296,25 @@ async function abschicken(){
       return;
     }catch(e){
       knopf.disabled=false; knopf.textContent=beschriftung;
-      zeigen("Versand hakt","<p>"+e.message+"</p><p>Wir nehmen den zweiten Weg: Datei und Mailprogramm. "+
-        "Klick auf Alles klar.</p>", true);
+      rueckfall("Direktversand ging nicht", "<p class='klein'>"+e.message+"</p>", d);
+      return;
     }
   }
+  rueckfall("Fast geschafft", "", d);
+}
 
+// Zweiter Weg: Datei sichern und das Mailprogramm mit fertiger Mail öffnen
+function rueckfall(titel, grund, d){
   herunterladen();
   const body="Hi, anbei meine Antworten als Datei ("+dateiname()+").\n\n"+
     (d.person||"")+(d.firma?" · "+d.firma:"")+(d.telefon?" · "+d.telefon:"")+"\n";
-  const mailto="mailto:"+EMPFAENGER+"?subject="+encodeURIComponent("Fragebogen — "+(d.firma||d.person||"ohne Namen"))+
-    "&body="+encodeURIComponent(body);
-
-  zeigen("Fast geschafft",
+  const mailto="mailto:"+EMPFAENGER+"?subject="+
+    encodeURIComponent("Fragebogen — "+(d.firma||d.person||"ohne Namen"))+"&body="+encodeURIComponent(body);
+  zeigen(titel, grund+
     "<p>Deine Antworten liegen als <b>"+dateiname()+"</b> im Download-Ordner, "+
     "dein Mailprogramm geht gleich auf.</p><p><b>Datei anhängen, senden.</b> Fertig.</p>", true);
   setTimeout(()=>{ window.location.href=mailto; }, 600);
+
 }
 
 $("btn-senden").onclick=abschicken;
