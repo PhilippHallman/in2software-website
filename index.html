@@ -3,10 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>In2Software — Ein Chatfenster ist kein Arbeitsplatz</title>
-<meta name="description" content="Wir richten Unternehmen ein KI-Agenten-System ein, das an ihre eigenen Systeme angeschlossen ist – und betreuen es monatlich, damit es wirklich benutzt wird.">
+<title>In2Software — Claude für Social-Media-Agenturen</title>
+<meta name="description" content="Für Agenturen mit organischem Social-Media-Content: Wir setzen Claude in eurer Agentur auf – mit eurem Kunden­wissen, angebunden an eure Tools, mit eigenen Knöpfen für eure wiederkehrende Arbeit.">
 <link rel="icon" type="image/svg+xml" href="brand/favicon.svg">
 <link rel="stylesheet" href="fonts.css">
+<script>document.documentElement.classList.add('js')</script>
 <style>
 :root{
   --ink:#0A0E17; --ink2:#0F1522; --panel:#141B2B; --panel2:#1A2336; --line:rgba(255,255,255,.08);
@@ -118,7 +119,7 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rg
 .vs .good li::before{content:"✓";position:absolute;left:0;color:var(--live);font-weight:700}
 .vs .good{border-color:rgba(124,196,255,.35);background:linear-gradient(180deg,rgba(124,196,255,.07),rgba(124,196,255,.02))}
 
-/* ---------- aufgaben (cowork demo) ---------- */
+/* ---------- aufgaben (chat demo) ---------- */
 .tasks .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
 @media(max-width:960px){.tasks .wrap{grid-template-columns:1fr}}
 .tasklist{display:grid;gap:12px;margin-top:28px}
@@ -395,7 +396,7 @@ form{background:#fff;border-color:var(--line);box-shadow:0 20px 50px rgba(20,50,
 label{color:var(--muted)} .fine{color:var(--dim)}
 .done{border-color:rgba(31,168,113,.4);background:rgba(31,168,113,.08);color:var(--text)}
 footer{color:var(--dim);border-top-color:var(--line)} footer a:hover{color:var(--text)}
-/* Terminal & Cowork bleiben dunkel (Kontrast) */
+/* Terminal & Chat-Demo bleiben dunkel (Kontrast) */
 .term,.cw{background:#0C1324;border-color:rgba(20,50,90,.25);box-shadow:0 30px 80px rgba(20,50,90,.25)}
 .term pre{color:#AEB9CF} .term .cmd{color:#6CBCFF} .term .ok{color:#3DDC97}
 .cw .u{background:rgba(108,188,255,.16);border-color:rgba(108,188,255,.35);color:#F3F6FC}
@@ -427,10 +428,69 @@ footer .logo{color:#F3F6FC} footer a:hover{color:#fff}
 .ticker{background:#0C1324;border-color:transparent} .ticker span{color:#DDE6F5} .ticker span::before{color:#6CBCFF}
 .vs .good li::before{color:#3DDC97}
 
+
+/* ---------- Mods in Claude (Nachbau Code-Bereich) ---------- */
+.cx{--c-bg:#FAF9F5;--c-side:#F2F0E9;--c-line:#E5E1D6;--c-ink:#1F1E1D;--c-mut:#6B6860;--c-faint:#9A968C;--c-acc:#C2613F;--c-soft:#F6E7DF;margin:8px 0 46px}
+.cx-win{background:var(--c-bg);border:1px solid var(--c-line);border-radius:16px;overflow:hidden;box-shadow:0 30px 80px rgba(20,30,50,.18);color:var(--c-ink);font-family:var(--body)}
+.cx-bar{height:44px;display:flex;align-items:center;gap:14px;padding:0 16px;border-bottom:1px solid var(--c-line);background:var(--c-side)}
+.cx-dots{display:flex;gap:7px}.cx-dots i{width:12px;height:12px;border-radius:50%;background:#E0DCD2}
+.cx-dots i:nth-child(1){background:#FF5F57}.cx-dots i:nth-child(2){background:#FEBC2E}.cx-dots i:nth-child(3){background:#28C840}
+.cx-modes{margin:0 auto;display:flex;gap:3px;background:#E9E6DD;border-radius:9px;padding:3px;transform:translateX(-30px)}
+.cx-modes b{font-size:13px;font-weight:600;color:var(--c-faint);padding:3px 14px;border-radius:7px}
+.cx-modes b.on{background:#fff;color:var(--c-ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.cx-path{font:12px var(--mono);color:var(--c-faint)}
+.cx-body{display:grid;grid-template-columns:200px minmax(0,1fr) minmax(0,1.05fr);height:540px}
+.cx-side{background:var(--c-side);border-right:1px solid var(--c-line);padding:16px 10px;overflow:hidden}
+.cx-sh{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--c-faint);padding:0 8px 8px}
+.cx-s{padding:8px 10px;border-radius:9px;margin-bottom:2px}.cx-s b{display:block;font-size:13.5px;font-weight:600;line-height:1.3}.cx-s small{font-size:12px;color:var(--c-mut)}
+.cx-s.on{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.cx-chat{position:relative;border-right:1px solid var(--c-line);display:flex;flex-direction:column;min-width:0}
+.cx-msgs{flex:1;overflow:hidden;padding:22px 22px 12px;display:flex;flex-direction:column;gap:12px}
+.cx-u{align-self:flex-end;background:#EFECE4;border-radius:14px;padding:9px 14px;font-size:15px;max-width:88%}
+.cx-tool{font:12.5px/1.5 var(--mono);color:var(--c-mut);border-left:2px solid var(--c-line);padding-left:10px}
+.cx-tool b{color:var(--c-ink);font-weight:600}
+.cx-a{font-size:15px;line-height:1.55;display:flex;gap:10px}.cx-a::before{content:"✻";color:var(--c-acc);font-size:16px;line-height:1.4}
+.cx-click{align-self:flex-start;font:12.5px var(--mono);color:var(--c-mut);border:1px dashed var(--c-line);border-radius:8px;padding:4px 10px}
+.cx-band{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:8px 18px;border-top:1px solid var(--c-line);background:var(--c-side);font:12.5px var(--mono);color:var(--c-mut);min-height:38px}
+.cx-band b{color:var(--c-ink)}.cx-band em{font-style:normal;background:var(--c-soft);color:var(--c-acc);border-radius:6px;padding:1px 8px;font-weight:600}
+.cx-in{margin:12px 16px 16px;border:1px solid var(--c-line);background:#fff;border-radius:14px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;font-size:14.5px;color:var(--c-faint)}
+.cx-in i{font-style:normal;width:28px;height:28px;border-radius:50%;background:#E9E6DD;color:#fff;display:grid;place-items:center}
+.cx-pane{background:#fff;padding:18px 20px;overflow:hidden;display:flex;flex-direction:column;gap:10px;min-width:0}
+.cx-mt{display:flex;gap:6px;flex-wrap:wrap}.cx-mt span{font:12px var(--mono);border:1px solid var(--c-line);border-radius:7px;padding:3px 9px;color:var(--c-mut)}.cx-mt span.on{border-color:var(--c-ink);color:var(--c-ink);font-weight:600}
+.cx-ph{font-family:var(--display);font-size:18px;font-weight:700;display:flex;justify-content:space-between;align-items:baseline;gap:10px}.cx-ph small{font:12px var(--mono);color:var(--c-faint);font-weight:400}
+.cx-it{border:1px solid var(--c-line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.cx-it>b{font-size:14.5px}.cx-it small{font-size:13px;color:var(--c-mut)}.cx-it.dim{opacity:.6;border-style:dashed}
+.cx-row{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cx-bt{display:flex;gap:6px;flex-wrap:wrap}
+.cx-bt button,.cx-bt span{font:600 13px var(--body);border:1px solid var(--c-line);border-radius:8px;padding:5px 11px;background:#FAF9F6;color:var(--c-ink)}
+.cx-bt .p{background:var(--c-ink);color:#fff;border-color:var(--c-ink);cursor:pointer}
+.cx-bt .p:hover{background:#3a3835}
+.cx-bt .p:focus-visible{outline:2px solid var(--c-acc);outline-offset:2px}
+.cx-warn{font-size:13px;color:#8A4E12;background:#F7ECDB;border-radius:8px;padding:6px 10px}
+.cx-ok{font-size:13px;color:#1D6B47}
+.cx-chk{font:12.5px/1.7 var(--mono);color:var(--c-mut)}.cx-chk i{font-style:normal;color:#1D8A5A}.cx-chk i.w{color:#B26A1C}
+.cx-sel{display:flex;gap:6px;flex-wrap:wrap}.cx-sel span{font-size:12.5px;border:1px solid var(--c-line);border-radius:7px;padding:2px 8px;background:#FAF9F6}
+.cx-tl{display:flex;gap:3px;align-items:flex-end;height:38px}.cx-tl i{flex:1;height:26px;border:1px solid #CFCAC0;border-radius:4px;background:#F4F2EC;font:10px var(--mono);color:var(--c-mut);display:grid;place-items:center;font-style:normal}
+.cx-tl i.on{background:var(--c-ink);color:#fff;border-color:var(--c-ink);height:32px}.cx-tl i.x{opacity:.35;border-style:dashed}
+.cx-pr{height:6px;border-radius:4px;background:#EEEBE3;overflow:hidden}.cx-pr i{display:block;height:100%;background:var(--c-acc)}
+.cx-pv{display:grid;grid-template-columns:62px 1fr;gap:12px;align-items:center}
+.cx-thumb{width:62px;height:110px;border-radius:9px;background:linear-gradient(160deg,#3B342E,#8C6A4F 55%,#E8C9A3);position:relative}
+.cx-thumb::after{content:"▶";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:16px}
+.cx-steps{display:flex;align-items:center;gap:18px;margin-top:18px}
+.cx-dots2{display:flex;gap:8px;flex:none}
+.cx-dots2 button{min-width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:#fff;font:600 15px var(--mono);color:var(--muted);cursor:pointer}
+.cx-dots2 button[aria-pressed="true"]{background:var(--text);color:#fff;border-color:var(--text)}
+.cx-steps p{color:var(--muted);font-size:16px;margin:0}
+.cx-fine{font-size:14px;color:var(--dim);margin-top:12px}
+.cx-anim{animation:cxIn .35s ease both}
+@keyframes cxIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.cx-anim{animation:none}}
+@media(max-width:1060px){.cx-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.cx-side{display:none}}
+@media(max-width:720px){.cx-body{grid-template-columns:1fr;height:auto}.cx-chat{border-right:0;border-bottom:1px solid var(--c-line)}.cx-msgs{max-height:none;min-height:0}.cx-pane{min-height:0}.cx-modes{transform:none}.cx-path{display:none}.cx-steps{flex-direction:column;align-items:flex-start;gap:10px}}
 /* reveal */
-.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+@media(prefers-reduced-motion:reduce){.rv,.js .rv{opacity:1;transform:none;transition:none}}
 
 /* ---------- mobile ---------- */
 html{scroll-padding-top:80px}
@@ -468,36 +528,33 @@ html{scroll-padding-top:80px}
     <a class="logo" href="#top" aria-label="In2Software"><svg class="mark" width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lqBase" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9DCFF"/><stop offset=".55" stop-color="#4FAAF9"/><stop offset="1" stop-color="#1B82E8"/></linearGradient><linearGradient id="lqRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".45" stop-color="#fff" stop-opacity=".15"/><stop offset="1" stop-color="#fff" stop-opacity=".7"/></linearGradient><radialGradient id="lqShade" cx=".78" cy=".85" r=".7"><stop offset="0" stop-color="#0B3A66" stop-opacity=".22"/><stop offset="1" stop-color="#0B3A66" stop-opacity="0"/></radialGradient><radialGradient id="lqKnob" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#E4F4FF"/><stop offset="1" stop-color="#A9D6F7"/></radialGradient><linearGradient id="lqTrack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2A40" stop-opacity=".92"/><stop offset="1" stop-color="#070C16" stop-opacity=".92"/></linearGradient><filter id="lqGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4"/></filter><filter id="lqSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.6"/></filter></defs><rect x="4" y="6" width="56" height="56" rx="16" fill="#2A8DEE" fill-opacity=".7" filter="url(#lqGlow)"/><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#lqBase)"/><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#lqShade)"/><ellipse cx="24.16" cy="12.96" rx="16.8" ry="5.6000000000000005" fill="#fff" fill-opacity=".55" filter="url(#lqSoft)"/><rect x="4.9" y="4.9" width="54.2" height="54.2" rx="15.1" fill="none" stroke="url(#lqRim)" stroke-width="1.6"/><rect x="6.34" y="6.34" width="51.32" height="51.32" rx="13.66" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1"/><rect x="12" y="22" width="40" height="20" rx="10" fill="url(#lqTrack)"/><rect x="12.7" y="22.7" width="38.6" height="18.6" rx="9.3" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1"/><ellipse cx="24" cy="25.5" rx="8" ry="1.6" fill="#fff" fill-opacity=".14"/><circle cx="42" cy="33" r="7.4" fill="#0A0E17" fill-opacity=".35" filter="url(#lqSoft)"/><circle cx="42" cy="32" r="7" fill="url(#lqKnob)"/><circle cx="42" cy="32" r="6.5" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width=".9"/><ellipse cx="40.6" cy="29.2" rx="3.2" ry="1.7" fill="#fff" fill-opacity=".85"/><path d="M37.2 35.2a6 6 0 0 0 9.6 0" stroke="#7CC4FF" stroke-opacity=".7" stroke-width=".9" fill="none"/></svg><span class="word">In<span class="two">2</span>Software</span></a>
     <ul>
       <li><a href="#problem">Warum</a></li>
-      <li><a href="#aufgaben">Beispiele</a></li>
+      
       <li><a href="#stufen">Die 5 Stufen</a></li>
-      <li><a href="#bausteine">Der Arbeitsplatz</a></li>
+      <li><a href="#branchen">In Claude</a></li><li><a href="#bausteine">Das System</a></li>
       <li><a href="#ablauf">Ablauf</a></li>
       <li><a href="#faq">Fragen</a></li>
     </ul>
-    <a class="btn btn-primary" href="#kontakt">Erstgespräch<span class="nav-long"> anfragen</span></a>
+    <a class="btn btn-primary" href="#kontakt">Hebel-Check<span class="nav-long"> anfragen</span></a>
   </div>
 </header>
 
 <main id="top">
 
 <!-- HERO -->
-<!-- Alternativ-Lead (Vorschlag, nicht aktiv):
-Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreibarbeit vorbereitet – Anfragen sortieren, zuordnen, Antwort oder Angebot entwerfen. Euer Team prüft und schickt selbst ab.
--->
 <section class="hero">
   <div class="hero-bg"></div><div class="aurora"></div><div class="sparkles" aria-hidden="true"></div>
   <div class="wrap">
     <div>
-      <span class="eyebrow">KI-Agenten-System für inhabergeführte Unternehmen</span>
-      <h1>Ein <span class="strike">Chatfenster</span> ist kein Arbeitsplatz.</h1>
-      <p class="lead">Wir richten Unternehmen ein KI-Agenten-System ein, das an ihre eigenen Systeme angeschlossen ist – Ablage, Werbekonto, CRM, Shop, Videodateien – und betreuen es monatlich, damit es wirklich benutzt wird.</p>
+      <span class="eyebrow">Für Social-Media-, Personal-Brand- und Reel-Agenturen</span>
+      <h1>Vom <span class="strike">Chat</span> zum System.</h1>
+      <p class="lead">Wir setzen Claude in eurer Agentur für euch auf: Wir schauen uns an, wie ihr heute arbeitet, richten Claude mit eurem Firmen- und Kundenwissen ein und verbessern, automatisieren oder bauen die Abläufe, die bei euch den größten Hebel haben. Was am Ende laufen muss, legen wir vorher in Abnahmetests fest.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#kontakt">Erstgespräch anfragen →</a>
-        <a class="btn btn-ghost" href="#bausteine">So funktioniert es ↓</a>
+        <a class="btn btn-primary" href="#kontakt">Hebel-Check anfragen →</a>
+        <a class="btn btn-ghost" href="#branchen">So sieht es in Claude aus ↓</a>
       </div>
       <div class="trust">
-        <div class="dots"><span>E-C</span><span>MA</span><span>+</span></div>
-        <div>Wir betreiben denselben Arbeitsplatz selbst.<br>Kiel · remote in ganz Deutschland</div>
+        <div class="dots"><span>PH</span><span>C</span><span>+</span></div>
+        <div>Wir arbeiten selbst jeden Tag so.<br>Kiel · remote in Deutschland, Österreich, Schweiz</div>
       </div>
     </div>
 
@@ -505,20 +562,18 @@ Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreib
     <div class="rig" aria-hidden="true">
       <svg viewBox="0 0 560 560">
         <defs><filter id="g"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-        <!-- wires -->
         <path class="wire on" d="M280 280 C 280 180, 200 150, 110 90"/>
         <path class="wire on" d="M280 280 C 360 190, 400 150, 460 90"/>
         <path class="wire on" d="M280 280 C 160 280, 120 280, 60 280"/>
         <path class="wire on" d="M280 280 C 400 280, 440 280, 500 280"/>
         <path class="wire" d="M280 280 C 200 380, 170 420, 110 470"/>
         <path class="wire on" d="M280 280 C 360 380, 400 420, 460 470"/>
-        <!-- nodes -->
-        <g transform="translate(40,36)"><rect class="node" width="140" height="68" rx="14"/><text class="nlabel" x="16" y="30">Ablage</text><text class="nsub" x="16" y="52">drive · sheets</text><circle cx="124" cy="18" r="5" fill="#3DDC97"/></g>
-        <g transform="translate(380,36)"><rect class="node" width="140" height="68" rx="14"/><text class="nlabel" x="16" y="30">Werbekonto</text><text class="nsub" x="16" y="52">meta · google</text><circle cx="124" cy="18" r="5" fill="#3DDC97"/></g>
-        <g transform="translate(-14,246)"><rect class="node" width="140" height="68" rx="14"/><text class="nlabel" x="16" y="30">CRM</text><text class="nsub" x="16" y="52">hubspot · notion</text><circle cx="124" cy="18" r="5" fill="#3DDC97"/></g>
-        <g transform="translate(434,246)"><rect class="node" width="140" height="68" rx="14"/><text class="nlabel" x="16" y="30">Shop</text><text class="nsub" x="16" y="52">shopify · shopware</text><circle cx="124" cy="18" r="5" fill="#3DDC97"/></g>
-        <g transform="translate(40,456)"><rect class="node" width="140" height="68" rx="14" stroke-dasharray="4 4"/><text class="nlabel" x="16" y="30">Mail</text><text class="nsub" x="16" y="52">nur Entwürfe</text><circle cx="124" cy="18" r="5" fill="#6B7489"/></g>
-        <g transform="translate(380,456)"><rect class="node" width="140" height="68" rx="14"/><text class="nlabel" x="16" y="30">Video</text><text class="nsub" x="16" y="52">lokal · ffmpeg</text><circle cx="124" cy="18" r="5" fill="#3DDC97"/></g>
+        <g transform="translate(40,36)"><rect class="node" width="140" height="68" rx="14"/><text class="nlabel" x="16" y="30">Planung</text><text class="nsub" x="16" y="52">metricool</text><circle cx="124" cy="18" r="5" fill="#3DDC97"/></g>
+        <g transform="translate(380,36)"><rect class="node" width="140" height="68" rx="14"/><text class="nlabel" x="16" y="30">Projekte</text><text class="nsub" x="16" y="52">notion · asana</text><circle cx="124" cy="18" r="5" fill="#3DDC97"/></g>
+        <g transform="translate(-14,246)"><rect class="node" width="140" height="68" rx="14"/><text class="nlabel" x="16" y="30">Ablage</text><text class="nsub" x="16" y="52">drive · dropbox</text><circle cx="124" cy="18" r="5" fill="#3DDC97"/></g>
+        <g transform="translate(434,246)"><rect class="node" width="140" height="68" rx="14"/><text class="nlabel" x="16" y="30">Insights</text><text class="nsub" x="16" y="52">meta · linkedin</text><circle cx="124" cy="18" r="5" fill="#3DDC97"/></g>
+        <g transform="translate(40,456)"><rect class="node" width="140" height="68" rx="14" stroke-dasharray="4 4"/><text class="nlabel" x="16" y="30">Kunden</text><text class="nsub" x="16" y="52">nur Entwürfe</text><circle cx="124" cy="18" r="5" fill="#6B7489"/></g>
+        <g transform="translate(380,456)"><rect class="node" width="140" height="68" rx="14"/><text class="nlabel" x="16" y="30">Team</text><text class="nsub" x="16" y="52">slack · teams</text><circle cx="124" cy="18" r="5" fill="#3DDC97"/></g>
         <circle cx="280" cy="280" r="150" fill="none" stroke="rgba(124,196,255,.12)"/>
         <circle cx="280" cy="280" r="190" fill="none" stroke="rgba(255,255,255,.04)"/>
       </svg>
@@ -531,84 +586,100 @@ Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreib
 </section>
 
 <div class="ticker" aria-hidden="true"><div class="track">
-  <span>Firmenwissen hinterlegt</span><span>An echte Systeme angeschlossen</span><span>Feste, wiederholbare Abläufe</span><span>Freigabe bleibt beim Menschen</span><span>Monatlicher Betrieb</span><span>Auftragsverarbeitung, kein Training</span><span>Dateien bleiben auf eurem Rechner</span>
-  <span>Firmenwissen hinterlegt</span><span>An echte Systeme angeschlossen</span><span>Feste, wiederholbare Abläufe</span><span>Freigabe bleibt beim Menschen</span><span>Monatlicher Betrieb</span><span>Auftragsverarbeitung, kein Training</span><span>Dateien bleiben auf eurem Rechner</span>
+  <span>Ein Claude für das ganze Team</span><span>An eure Tools angebunden</span><span>Eigene Knöpfe statt Einzelprompts</span><span>Kundenwissen je Kunde</span><span>Freigabe bleibt bei euch</span><span>In eurem eigenen Claude-Konto</span><span>Auftragsverarbeitungsvertrag vor dem Start</span>
+  <span>Ein Claude für das ganze Team</span><span>An eure Tools angebunden</span><span>Eigene Knöpfe statt Einzelprompts</span><span>Kundenwissen je Kunde</span><span>Freigabe bleibt bei euch</span><span>In eurem eigenen Claude-Konto</span><span>Auftragsverarbeitungsvertrag vor dem Start</span>
 </div></div>
 
 <!-- PROBLEM / IRRGLAUBE -->
 <section class="ninety" id="problem">
-  <div class="wrap">
+  <div class="wrap" style="align-items:center">
     <div class="rv">
       <span class="eyebrow">Das Problem</span>
-      <div class="big">95<small>%</small></div>
-      <p class="lead" style="margin-top:18px">aller KI-Einführungen in Unternehmen bringen keinen messbaren Ertrag. Nicht, weil die KI zu schlecht wäre. Sondern weil sie an nichts angeschlossen ist.</p>
-      <div class="src">Quelle: MIT, „State of AI in Business" 2025, 300 untersuchte Einführungen</div>
+      <div class="big">Strg+V</div>
     </div>
     <div class="rv">
-      <h2 style="margin-bottom:22px">So sieht es in fast jeder Firma aus, in die wir reinschauen</h2>
+      <h2 style="margin-bottom:18px">Ihr nutzt KI längst. Nur noch nicht als System.</h2>
+      <p class="lead">Entwurf im Chat, Kopie ins Doc, Link per WhatsApp, Post ins Planungstool. Wie oft wird bei euch ein Beitrag von Hand weitergetragen – bis er draußen ist?</p>
+    </div>
+    <div class="rv" style="grid-column:1/-1">
       <div class="vs">
         <div class="card bad">
-          <h3>Heute: das Chatfenster</h3>
+          <h3>Heute: viele Chats</h3>
           <ul>
-            <li>Drei Leute, drei Abos, jeder promptet anders</li>
-            <li>Die KI kennt weder Produkte noch Kunden noch Tonalität</li>
-            <li>Jede Antwort muss doppelt geprüft werden</li>
-            <li>Zahlen aus drei Systemen werden von Hand zusammengesucht</li>
-            <li>Nach drei Wochen macht es jeder wieder selbst – weil es so schneller ist</li>
+            <li>Jeder im Team hat eigene Chats, eigene Prompts, eigene GPTs</li>
+            <li>Dieselbe Caption kommt bei zwei Leuten in zwei Qualitäten raus</li>
+            <li>KI und Tools reden nicht miteinander – dazwischen sitzt ein Mensch mit Copy-Paste</li>
+            <li>Freigaben stecken in WhatsApp, Mail und Kommentaren – und die Korrektur des Kunden landet nicht im nächsten Entwurf</li>
+            <li>Wer am besten promptet, wird zum Engpass – und fehlt, wenn er krank ist</li>
           </ul>
         </div>
         <div class="card good">
-          <h3>Das KI-Agenten-System</h3>
+          <h3>Mit dem System: ein Stand für alle</h3>
           <ul>
-            <li>Firmenwissen ist hinterlegt – die KI kennt euch ab dem ersten Satz</li>
-            <li>Sie bedient eure echten Werkzeuge: Ablage, Werbekonto, CRM, Shop</li>
-            <li>Wiederkehrende Aufgaben sind feste Befehle, keine Prompts</li>
-            <li>Jede Ausgabe landet zur Freigabe bei einem Menschen</li>
-            <li>Jemand pflegt es – monatlich, mit Bericht, wer es tatsächlich nutzt</li>
+            <li>Ein zentrales Claude für das ganze Team, mit Kundenwissen, Ton und Regeln je Kunde</li>
+            <li>Angebunden an eure Werkzeuge: Planung, Projekte, Ablage, Insights, Team-Chat</li>
+            <li>Wiederkehrende Arbeit als feste Abläufe – automatisiert oder neu gebaut</li>
+            <li>Jeder im Team startet auf demselben Stand</li>
+            <li>Was nach außen geht, gibt bei euch ein Mensch frei</li>
           </ul>
         </div>
       </div>
-      <p style="margin-top:22px;color:var(--muted)"><b style="color:var(--text)">Der Irrglaube:</b> „Wir brauchen das bessere Modell oder den besseren Prompt." Nein. Meist liegt der Fehler nicht an Halluzinationen des Modells, sondern an kaputter Anbindung und fehlender Pflege.</p>
+      <p style="margin-top:22px;color:var(--muted)"><b style="color:var(--text)">Der Irrglaube:</b> „Wir brauchen nur bessere Prompts – oder noch ein Tool.“ Der Engpass ist selten der Prompt. Er liegt dazwischen: zwischen den Chats, den Tools und den Köpfen im Team.</p>
     </div>
   </div>
 </section>
 
-<!-- AUFGABEN (Cowork-Demo) -->
-<section class="tasks" id="aufgaben">
+<!-- SO SIEHT ARBEIT DAMIT AUS: Mods in Claude -->
+<section id="branchen">
   <div class="wrap">
-    <div class="rv">
+    <div class="sec-head rv">
       <span class="eyebrow">So sieht Arbeit damit aus</span>
-      <h2>Sag es wie einem Kollegen. Der Rest passiert im Hintergrund.</h2>
-      <p class="lead" style="margin-top:18px">Kein Prompt-Handbuch. Ihr beschreibt die Aufgabe, der Arbeitsplatz holt sich aus euren Systemen, was er braucht, und legt das Ergebnis zur Freigabe ab.</p>
-      <div class="tasklist" role="tablist" aria-label="Beispielaufgaben">
-        <button class="task" role="tab" aria-selected="true" data-t="0"><span class="q">01</span><div><b>„Schneide das Video für Freitag."</b><span>Interview finden, transkribieren, kürzen, Untertitel – der Cutter bekommt den Rohschnitt.</span><div class="meta"><i>Freigabe: Cutter</i><em>6 min statt 2,5 h · Beispielrechnung, keine Kundenmessung</em></div></div><div class="bar"><i></i></div></button>
-        <button class="task" role="tab" aria-selected="false" data-t="1"><span class="q">02</span><div><b>„Mach die Buchhaltung für September fertig."</b><span>Belege sammeln, mit Bank abgleichen, vorkontieren, fehlende Belege auflisten.</span><div class="meta"><i>Freigabe: Steuerberater</i><em>12 min statt 4 h · Beispielrechnung, keine Kundenmessung</em></div></div><div class="bar"><i></i></div></button>
-        <button class="task" role="tab" aria-selected="false" data-t="2"><span class="q">03</span><div><b>„Prüf meine Mails der Woche. Hab ich was vergessen?"</b><span>Offene Anfragen, ungesendete Verträge, unbestätigte Termine – plus Antwortentwürfe.</span><div class="meta"><i>Freigabe: du</i><em>3 min statt 1,5 h · Beispielrechnung, keine Kundenmessung</em></div></div><div class="bar"><i></i></div></button>
-      </div>
+      <h2>Ein Satz an Claude – oder ein Klick auf euren Knopf.</h2>
+      <p class="lead">Claude holt sich aus euren angebundenen Tools, was es braucht. Für die Abläufe mit dem größten Hebel bauen wir eigene Oberflächen in Claude: rechts neben dem Gespräch, mit euren Kunden, eurem Stand und Knöpfen. Wählt eure Agenturart und klickt euch durch.</p>
     </div>
-    <div class="rig2 rv" id="rig2" aria-hidden="true">
-      <svg viewBox="0 0 560 560">
-        <path class="wire" data-n="0" d="M280 280 C 280 180, 200 150, 110 90"/>
-        <path class="wire" data-n="1" d="M280 280 C 360 190, 400 150, 450 90"/>
-        <path class="wire" data-n="2" d="M280 280 C 160 280, 120 280, 56 280"/>
-        <path class="wire" data-n="3" d="M280 280 C 400 280, 440 280, 504 280"/>
-        <path class="wire" data-n="4" d="M280 280 C 200 380, 170 420, 110 470"/>
-        <path class="wire" data-n="5" d="M280 280 C 360 380, 400 420, 450 470"/>
-        <circle cx="280" cy="280" r="150" fill="none" stroke="rgba(124,196,255,.12)"/>
-        <circle cx="280" cy="280" r="190" fill="none" stroke="rgba(255,255,255,.04)"/>
-      </svg>
-      <div class="hn" style="left:7.1%;top:6.4%"><b></b><small></small><i></i></div>
-      <div class="hn" style="left:67.9%;top:6.4%"><b></b><small></small><i></i></div>
-      <div class="hn" style="left:-2.5%;top:43.9%"><b></b><small></small><i></i></div>
-      <div class="hn" style="left:77.5%;top:43.9%"><b></b><small></small><i></i></div>
-      <div class="hn" style="left:7.1%;top:81.4%"><b></b><small></small><i></i></div>
-      <div class="hn" style="left:67.9%;top:81.4%"><b></b><small></small><i></i></div>
-      <div class="cw">
-        <div class="top"><i></i><i></i><i></i><span>KI-Agenten-System · euer Mac</span></div>
-        <div class="log" id="cwlog"></div>
-        <div class="in"><div class="box" id="cwbox"><span class="ph">Beschreib die Aufgabe wie einem Kollegen …</span></div><div class="send off" id="cwsend">↑</div></div>
-      </div>
+    <div class="tabs rv" role="tablist" aria-label="Agenturart">
+      <button class="tab" role="tab" aria-selected="true" data-p="p1" data-cx="0">Social Media & Community</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="p2" data-cx="1">Personal Branding & Ghostwriting</button>
+      <button class="tab" role="tab" aria-selected="false" data-p="p3" data-cx="2">Reels, Shorts & YouTube</button>
     </div>
+    <div class="cx rv" id="cx">
+      <div class="cx-win">
+        <div class="cx-bar"><span class="cx-dots"><i></i><i></i><i></i></span><span class="cx-modes" aria-hidden="true"><b>Chat</b><b class="on">Code</b></span><span class="cx-path" id="cxPath">~/Agentur</span></div>
+        <div class="cx-body">
+          <aside class="cx-side" aria-hidden="true"><div class="cx-sh">Sitzungen</div><div id="cxSide"></div></aside>
+          <div class="cx-chat">
+            <div class="cx-msgs" id="cxMsgs" aria-live="polite"></div>
+            <div class="cx-band" id="cxBand"></div>
+            <div class="cx-in"><span>Sag Claude, was zu tun ist …</span><i>↑</i></div>
+          </div>
+          <div class="cx-pane" id="cxPane"></div>
+        </div>
+      </div>
+      <div class="cx-steps">
+        <div class="cx-dots2" id="cxDots" role="group" aria-label="Schritt"></div>
+        <p id="cxSay"></p>
+      </div>
+      <noscript><p class="cx-fine">Die klickbare Vorschau braucht JavaScript. Unten stehen dieselben Abläufe als Liste.</p></noscript>
+      <p class="cx-fine">Interaktiver Nachbau mit erfundenen Kunden und Daten, keine Aufnahme eines Kundensystems. So sehen Mods im Code-Bereich der Claude-App aus; In2Software ist unabhängig, das ist kein Angebot von Anthropic. Welche Knöpfe ihr bekommt, entscheidet die Analyse. Was nach außen geht, löst bei euch ein Mensch aus.</p>
+    </div>
+    <div class="panel on" id="p1"><div class="flow">
+      <div class="card"><code>/redaktionsplan</code><div><h4>Redaktionsplan je Kunde</h4><p>Themen aus Kundenwissen, Saison und bisherigen Zahlen – Captions und Formate als Entwürfe direkt im Planungstool.</p></div></div>
+      <div class="card"><code>/community</code><div><h4>Antwortentwürfe für Kommentare</h4><p>Im Ton des Kunden, mit seinen No-Gos. Kritisches wird markiert, nicht beantwortet.</p></div></div>
+      <div class="card"><code>/report</code><div><h4>Monatsbericht mit Klartext</h4><p>Zahlen aus den Insights, Einordnung, drei Vorschläge für den nächsten Monat – in eurer Vorlage.</p></div></div>
+      <div class="card"><code>/paket-check</code><div><h4>Mehr geliefert als vereinbart?</h4><p>Lieferungen gegen Paket – Zusatzwünsche werden sichtbar, bevor sie untergehen.</p></div></div>
+    </div></div>
+    <div class="panel" id="p2"><div class="flow">
+      <div class="card"><code>/interview</code><div><h4>Interview zu Beitragsideen</h4><p>Sprachnachricht oder Call-Transkript des Kunden → Themen, Thesen und Entwürfe in seiner Stimme.</p></div></div>
+      <div class="card"><code>/stimme</code><div><h4>Stimme je Person, für das ganze Team</h4><p>Ton, Lieblingsformulierungen, Tabus – gepflegt an einer Stelle statt im Kopf einer Person.</p></div></div>
+      <div class="card"><code>/freigabe</code><div><h4>Freigabeschleifen im Griff</h4><p>Welche Fassung gilt, wer hat was gesagt, was ist offen – aus Kommentaren, Mails und Chats zusammengeführt.</p></div></div>
+      <div class="card"><code>/repurpose</code><div><h4>Ein Gedanke, viele Formate</h4><p>Aus einem Beitrag Karussell-Gerüst, Newsletter-Absatz und Kommentar-Antworten.</p></div></div>
+    </div></div>
+    <div class="panel" id="p3"><div class="flow">
+      <div class="card"><code>/skript</code><div><h4>Hooks und Skripte</h4><p>Aus Kundenwissen und Top-Formaten: Hook-Varianten, Skript, Shotlist für den Dreh.</p></div></div>
+      <div class="card"><code>/rohschnitt</code><div><h4>Video-Vorarbeit</h4><p>Rohmaterial → Transkript, Schnittliste, technischer Rohschnitt, Untertitel. Den Feinschnitt macht euer Cutter.</p></div></div>
+      <div class="card"><code>/titel</code><div><h4>Titel, Beschreibung, Kapitel</h4><p>Für YouTube und Shorts, im Kanalton, mit Varianten zum Testen.</p></div></div>
+      <div class="card"><code>/auswertung</code><div><h4>Was hat funktioniert?</h4><p>Hook, Länge, Format gegen Aufrufe und Wiedergabedauer – als Grundlage für den nächsten Drehtag.</p></div></div>
+    </div></div>
   </div>
 </section>
 
@@ -617,15 +688,15 @@ Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreib
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">Selbst-Einordnung</span>
-      <h2>Die fünf Stufen der KI-Arbeit. Auf welcher steht euer Unternehmen?</h2>
-      <p class="lead">Fast alle Unternehmen stehen auf Stufe 1 oder 2. Der Nutzen beginnt auf Stufe 3, das Geschäft auf Stufe 4. Stufe 5 verkauft euch gerade jeder – kauft sie nicht.</p>
+      <h2>Die fünf Stufen der KI-Arbeit. Auf welcher steht eure Agentur?</h2>
+      <p class="lead">Wenn ihr täglich mit ChatGPT oder Claude arbeitet, steht ihr wahrscheinlich auf Stufe 2 oder 3. Professionell wird es auf Stufe 4. Stufe 5 klingt gut – für Kundenarbeit wollt ihr sie nicht.</p>
     </div>
     <div class="stairs rv">
-      <div class="step" style="--h:0"><span class="n">Stufe 1</span><h3>Prompten</h3><p>Ein Chatfenster. Jede Frage bei null. Kennt die Firma nicht.</p></div>
-      <div class="step" style="--h:1"><span class="n">Stufe 2</span><h3>Prompt Engineering</h3><p>Bessere Fragen, Vorlagen in Notizen. Hängt an einer Person.</p></div>
-      <div class="step here" style="--h:2"><span class="tag">Hier beginnt der Nutzen</span><span class="n">Stufe 3</span><h3>Context Engineering</h3><p>Firmenwissen, Vorlagen, Kundendossiers sind hinterlegt. Die KI kennt euch.</p></div>
-      <div class="step here" style="--h:3"><span class="tag">Hier arbeiten wir</span><span class="n">Stufe 4</span><h3>Harness</h3><p>Die KI bedient eure echten Werkzeuge – mit Regeln, Freigaben und Grenzen.</p></div>
-      <div class="step hype" style="--h:4"><span class="tag">Marketing-Versprechen</span><span class="n">Stufe 5</span><h3>Autonome Agenten</h3><p>Mehrere KIs arbeiten allein. Die wenigsten solcher Projekte erreichen den produktiven Betrieb.</p></div>
+      <div class="step" style="--h:0"><span class="n">Stufe 1</span><h3>Prompten</h3><p>Ein Chatfenster. Jede Frage bei null. Kennt weder Agentur noch Kunden.</p></div>
+      <div class="step" style="--h:1"><span class="n">Stufe 2</span><h3>Prompt-Sammlung</h3><p>Eigene GPTs, Prompt-Docs, gute Vorlagen. Hängt an einzelnen Leuten.</p></div>
+      <div class="step" style="--h:2"><span class="n">Stufe 3</span><h3>Kontext</h3><p>Projekte mit Kundenwissen und Ton. Gute Ergebnisse – aber jeder kopiert sie selbst in die Tools.</p></div>
+      <div class="step here" style="--h:3"><span class="tag">Hier bauen wir</span><span class="n">Stufe 4</span><h3>System</h3><p>Ein Claude für alle, angebunden an eure Tools, mit festen Abläufen, Regeln und Freigaben.</p></div>
+      <div class="step hype" style="--h:4"><span class="tag">Marketing-Versprechen</span><span class="n">Stufe 5</span><h3>Autonome Agenten</h3><p>KIs, die allein posten und antworten. Für Kundenarbeit nicht das, was ihr wollt.</p></div>
     </div>
   </div>
 </section>
@@ -634,83 +705,50 @@ Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreib
 <section class="bau" id="bausteine">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow">Was wir einrichten</span>
-      <h2>Vier Bausteine. Immer gleich gebaut, immer individuell gefüllt.</h2>
-      <p class="lead">Kein Beratungs-PDF, keine Software-Lizenz. Ein eingerichteter Arbeitsplatz auf eurem Rechner, der nach vier Wochen läuft.</p>
+      <span class="eyebrow">Was wir bauen</span>
+      <h2>Vier Bausteine. Immer gleich gebaut, für jede Agentur anders gefüllt.</h2>
+      <p class="lead">Keine neue Software, keine Lizenz von uns. Wir bauen das System in eurem eigenen Claude-Konto – ihr behaltet es, auch ohne uns.</p>
     </div>
     <div class="grid g4">
       <div class="card rv">
         <div class="ico">01</div>
-        <h3>Gedächtnis</h3>
-        <p>Firmenprofil, Produkte, Preise, Tonalität, Vorlagen, Arbeitsweise. Je Kunde ein Dossier.</p>
-        <div class="vis"><b>wissen/</b><br>├ <span class="a">firma.md</span><br>├ tonalitaet.md<br>├ preisliste.md<br>└ kunden/<br>&nbsp;&nbsp;├ <b>kunde-a.md</b><br>&nbsp;&nbsp;└ <b>kunde-b.md</b></div>
+        <h3>Zentrale</h3>
+        <p>Ein Claude für das ganze Team. Je Kunde ein Projekt mit Wissen, Ton, Formaten und No-Gos.</p>
+        <div class="vis"><b>kunden/</b><br>├ <span class="a">kunde-a/</span><br>│ ├ ton.md<br>│ ├ formate.md<br>│ └ no-gos.md<br>└ <b>kunde-b/</b><br>agentur/<span class="a">regeln.md</span></div>
       </div>
       <div class="card rv">
         <div class="ico">02</div>
-        <h3>Anschluss</h3>
-        <p>Anbindung der echten Werkzeuge – nur die, die ihr schriftlich freigebt. Lesend, wo Schreiben nicht nötig ist.</p>
-        <div class="vis">drive &nbsp;&nbsp;&nbsp;&nbsp; <span class="g">● verbunden</span><br>meta ads &nbsp;&nbsp;<span class="g">● lesend</span><br>google ads <span class="g">● lesend</span><br>notion &nbsp;&nbsp;&nbsp;&nbsp;<span class="g">● verbunden</span><br>mail &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;○ nur Entwürfe</div>
+        <h3>Anbindung</h3>
+        <p>Eure Werkzeuge, angebunden – nur die, die ihr freigebt. Lesend, wo Schreiben nicht nötig ist.</p>
+        <div class="vis">metricool &nbsp;&nbsp;<span class="g">● entwürfe</span><br>notion &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="g">● verbunden</span><br>drive &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="g">● verbunden</span><br>insights &nbsp;&nbsp;&nbsp;<span class="g">● lesend</span><br>slack &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="g">● intern</span></div>
       </div>
       <div class="card rv">
         <div class="ico">03</div>
         <h3>Abläufe</h3>
-        <p>Drei bis sechs wiederkehrende Aufgaben als feste Befehle. Ein Wort statt zwanzig Minuten Prompten.</p>
-        <div class="vis"><span class="a">/report</span> kunde-a september<br><span class="a">/angebot</span> notiz-erstgespraech.md<br><span class="a">/content</span> briefing-kunde-b.md<br><span class="a">/rohschnitt</span> interview.mp4<br><span class="g">→ liegt in _freigabe/</span></div>
+        <p>Die ein bis drei Abläufe mit dem größten Hebel – automatisiert, verbessert oder neu gebaut. Als Befehl oder als Knopf in Claude.</p>
+        <div class="vis"><span class="a">/onboarding</span> kunde-neu<br><span class="a">/redaktionsplan</span> kunde-b november<br><span class="a">/repurpose</span> podcast-12.mp3<br><span class="a">/paket-check</span> kunde-c<br><span class="g">→ zur freigabe</span></div>
       </div>
       <div class="card rv">
         <div class="ico">04</div>
-        <h3>Betrieb</h3>
-        <p>Schulung, dann monatlich: Nachjustieren, neue Abläufe, Reparatur bei Schnittstellen-Änderungen, Nutzungsbericht.</p>
-        <div class="vis"><b>Nutzung Oktober</b><br>/report &nbsp;&nbsp;&nbsp;&nbsp;18×<br>/content &nbsp;&nbsp;&nbsp;31×<br>/angebot &nbsp;&nbsp;&nbsp;&nbsp;7×<br>Zeit je Report <span class="g">2:40 h → 0:25 h</span> <i style="font-style:normal">· Beispielrechnung, keine Kundenmessung</i></div>
+        <h3>Regeln & Abnahme</h3>
+        <p>Was nie rausgeht, wer freigibt, welche Daten wohin dürfen. Und Abnahmetests, die ihr vorher mit uns schreibt.</p>
+        <div class="vis"><b>abnahme /redaktionsplan</b><br><span class="g">✓</span> 12 Entwürfe im Kundenton<br><span class="g">✓</span> keine No-Go-Themen<br><span class="g">✓</span> landet als Entwurf im Tool<br><span class="g">✓</span> nichts wird veröffentlicht</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BRANCHEN -->
-<section id="branchen" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">Beispiele</span>
-      <h2>Was so ein Arbeitsplatz konkret tut</h2>
-      <p class="lead">Drei Branchen, in denen teure Stunden in Text-, Recherche- und Dokumentenarbeit verbrennen. Die Abläufe unten sind echte Startpakete.</p>
-    </div>
-    <div class="tabs rv" role="tablist">
-      <button class="tab" role="tab" aria-selected="true" data-p="p1">Onlineshops & Marken</button>
-      <button class="tab" role="tab" aria-selected="false" data-p="p2">Marketingagenturen</button>
-      <button class="tab" role="tab" aria-selected="false" data-p="p3">Beratungen & Büros</button>
-    </div>
-    <div class="panel on" id="p1"><div class="flow">
-      <div class="card"><code>/werbemittel</code><div><h4>Werbemittel-Straße</h4><p>Produktdaten → Skript → Text-, Bild- und Videovarianten, fertig zum Hochladen. Aus fünf Werbemitteln im Monat werden dreißig.</p><div class="hitl">freigabe: mensch wählt & lädt hoch</div></div></div>
-      <div class="card"><code>/konto</code><div><h4>Werbekonto im Klartext</h4><p>„Was lief letzte Woche, was verbrennt Geld, was pausieren?" – gegen das echte Konto, lesend.</p><div class="hitl">freigabe: änderungen macht der mensch</div></div></div>
-      <div class="card"><code>/produkttext</code><div><h4>Produkttexte in Markensprache</h4><p>Neue Artikel vollständig beschrieben, statt zwei Stunden pro Artikel.</p><div class="hitl">freigabe: vor veröffentlichung</div></div></div>
-      <div class="card"><code>/retouren</code><div><h4>Retouren- und Bewertungsanalyse</h4><p>Monatlicher Bericht: welche Artikel warum zurückkommen. Wirkt direkt auf die Marge.</p><div class="hitl">freigabe: bericht, keine aktion</div></div></div>
-    </div></div>
-    <div class="panel" id="p2"><div class="flow">
-      <div class="card"><code>/rohschnitt</code><div><h4>Video-Vorarbeit</h4><p>Rohmaterial → Transkript, Schnittliste, technischer Rohschnitt, Untertitel, Shorts-Vorschläge. Der Cutter macht den Feinschnitt.</p><div class="hitl">freigabe: cutter importiert</div></div></div>
-      <div class="card"><code>/content</code><div><h4>Content-Batch je Kunde</h4><p>Briefing → 20 Post-Varianten in der Tonalität des jeweiligen Kunden, plus Vier-Wochen-Kalender.</p><div class="hitl">freigabe: mensch wählt & veröffentlicht</div></div></div>
-      <div class="card"><code>/report</code><div><h4>Monatsreport je Kunde</h4><p>Meta und Google Ads → Report in Hausvorlage: Zahlen, Klartext, drei Empfehlungen.</p><div class="hitl">freigabe: account-manager prüft & sendet</div></div></div>
-      <div class="card"><code>/angebot</code><div><h4>Angebot aus Gesprächsnotiz</h4><p>Notiz oder Audio → Angebots-PDF in Hausstruktur mit Preisvorschlag aus eurer Liste. 45 Minuten werden 10.</p><div class="hitl">freigabe: inhaber</div></div></div>
-    </div></div>
-    <div class="panel" id="p3"><div class="flow">
-      <div class="card"><code>/angebot</code><div><h4>Proposal-Fabrik</h4><p>Aus der Gesprächsnotiz wird ein vollständiges Angebot in Hausstruktur. Der größte Zeitfresser in jeder Beratung.</p><div class="hitl">freigabe: partner</div></div></div>
-      <div class="card"><code>/recherche</code><div><h4>Markt- und Wettbewerbsrecherche</h4><p>Was zwei Tage Juniorarbeit war, wird ein Vormittag – mit Quellenangaben.</p><div class="hitl">freigabe: stichprobe der quellen</div></div></div>
-      <div class="card"><code>/protokoll</code><div><h4>Workshop-Dokumentation</h4><p>Aufzeichnung rein, strukturierter Ergebnisbericht in Hausvorlage raus, Aufgaben im Projekttool.</p><div class="hitl">freigabe: vor versand</div></div></div>
-      <div class="card"><code>/wissen</code><div><h4>Interne Wissensbasis</h4><p>Alle Projekte, Methoden, Vorlagen durchsuchbar. Löst „wer hat das schon mal gemacht".</p><div class="hitl">nur lesend</div></div></div>
-    </div></div>
-  </div>
-</section>
 
 <!-- PHOTO BAND -->
 <section class="band">
   <div class="wrap">
     <div class="photo rv">
       <img src="img/arbeitsplatz.jpg" alt="Arbeitsplatz mit Laptop und Notizen" loading="lazy">
-      <div class="cap"><b>Auf eurem Rechner, nicht in irgendeiner Cloud-Oberfläche</b>Dateien und Firmenwissen bleiben bei euch. Nur die Texte einer Aufgabe gehen verschlüsselt an das Modell – über euren eigenen Vertrag beim Modellanbieter, im Geschäftstarif ohne Training auf euren Daten. Für unsere Arbeit bei euch gibt es zusätzlich einen Auftragsverarbeitungsvertrag mit uns.</div>
+      <div class="cap"><b>In eurem eigenen Claude-Konto</b>Ihr bucht Claude für euer Team selbst bei Anthropic. Wir richten es ein. Für unsere Arbeit an euren Daten schließen wir vorher einen Auftragsverarbeitungsvertrag.</div>
     </div>
     <div class="photo rv">
       <img src="img/team.jpg" alt="Team bei der Arbeit" loading="lazy">
-      <div class="cap"><b>Eure Leute arbeiten damit</b>Wir verkaufen keine KI, die allein arbeitet. Wir verkaufen Menschen, die mit KI deutlich schneller sind – kontrolliert wird weiter von Menschen.</div>
+      <div class="cap"><b>Euer Team macht die Arbeit, die zählt</b>Ideen, Ton, Gespür für den Kunden bleiben bei euch. Das System übernimmt, was dazwischen liegt.</div>
     </div>
   </div>
 </section>
@@ -720,33 +758,33 @@ Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreib
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow">So läuft es</span>
-      <h2>Vom ersten Gespräch bis zum laufenden Betrieb</h2>
-      <p class="lead">Vier bis acht Arbeitstage bei uns, verteilt über drei bis vier Wochen bei euch. Kein Start ohne schriftliche Zusage und vollständigen Zahlungseingang.</p>
+      <h2>Vom Hebel-Check bis zum laufenden System</h2>
+      <p class="lead">Den Zeitplan legen wir vor dem Vertrag schriftlich fest. Kein Start ohne schriftliche Zusage und vollständigen Zahlungseingang.</p>
     </div>
     <div class="timeline rv">
-      <div class="tl"><div class="n">Schritt 1</div><h4>Erstgespräch</h4><p>Fünf Fragen zu eurem Tagesgeschäft. Wir sagen ehrlich, ob es sich lohnt – oder nicht.</p><div class="t">30 min · video</div></div>
-      <div class="tl"><div class="n">Schritt 2</div><h4>Angebotstermin</h4><p>Bestandsaufnahme, Soll-Zustand, Live-Demo an euren eigenen Beispielen, Angebot.</p><div class="t">60 min</div></div>
-      <div class="tl"><div class="n">Schritt 3</div><h4>Zusage und Zahlung</h4><p>Schriftlich, mit Abnahmekriterien je Ablauf. Rechnung vollständig vor Beginn – danach starten wir.</p><div class="t">1 seite</div></div>
-      <div class="tl"><div class="n">Schritt 4</div><h4>Aufbau</h4><p>Gedächtnis, Anschluss, die ersten Abläufe. Schulung in Woche zwei.</p><div class="t">woche 1–3</div></div>
-      <div class="tl"><div class="n">Schritt 5</div><h4>Übergabe</h4><p>Abnahme je Ablauf, erster Nutzungsbericht, Betrieb beginnt.</p><div class="t">woche 4</div></div>
-      <div class="tl"><div class="n">Schritt 6</div><h4>Ergebnis-Termin</h4><p>Zahlen: Zeit vorher, Zeit nachher. Nächste Abläufe. Von hier an wächst es.</p><div class="t">woche 10</div></div>
+      <div class="tl"><div class="n">Schritt 1</div><h4>Hebel-Check</h4><p>Wir schauen gemeinsam, wo Claude bei euch den größten Hebel hätte – oder ob es nicht passt.</p><div class="t">30 min · video</div></div>
+      <div class="tl"><div class="n">Schritt 2</div><h4>Zusage und Zahlung</h4><p>Umfang, Zeitplan und laufende Fremdkosten schriftlich. Rechnung vollständig vor Beginn.</p><div class="t">1 seite</div></div>
+      <div class="tl"><div class="n">Schritt 3</div><h4>Analyse und Abnahmetests</h4><p>Wie arbeitet ihr heute, welche Tools, wie nutzt das Team KI schon? Ergebnis: die ein bis drei Abläufe mit dem größten Hebel – und die Tests, die sie bestehen müssen.</p><div class="t">vor dem bau</div></div>
+      <div class="tl"><div class="n">Schritt 4</div><h4>Aufbau</h4><p>Zentrale, Anbindungen, Abläufe, Regeln – in eurem Claude-Konto.</p><div class="t">nach zeitplan</div></div>
+      <div class="tl"><div class="n">Schritt 5</div><h4>Einweisung</h4><p>Das Team arbeitet mit dem System, wir justieren nach.</p><div class="t">mit dem team</div></div>
+      <div class="tl"><div class="n">Schritt 6</div><h4>Abnahme</h4><p>Jeder Ablauf gegen die Tests, die ihr vorher mitgeschrieben habt. Danach läuft das System in eurem Claude-Konto.</p><div class="t">übergabe</div></div>
     </div>
   </div>
 </section>
 
-<!-- GRENZEN -->
+<!-- LIMITS -->
 <section class="limits" style="padding-top:0">
   <div class="wrap">
     <div class="rv">
       <span class="eyebrow">Ehrlich</span>
       <h2>Was wir nicht versprechen</h2>
-      <p class="lead" style="margin-top:18px">2026 ist das Jahr nach der Ernüchterung. Wer euch mehr verspricht als das hier, hat es noch nie betrieben.</p>
+      <p class="lead" style="margin-top:18px">Ihr kennt KI gut genug, um Versprechen zu misstrauen. Darum steht hier, was wir nicht sagen.</p>
     </div>
     <ul class="rv">
-      <li><span class="k">kein</span><p><b>Autonomer Agent, der allein arbeitet</b>Die meisten solcher Projekte scheitern am Übergang in den produktiven Betrieb. Bei uns gibt jede Ausgabe ein Mensch frei.</p></li>
-      <li><span class="k">kein</span><p><b>„KI schreibt eure Inhalte"</b>Reiner KI-Text wirkt schnell fremd und wird oft erkannt. Wir liefern Entwürfe und Menge – die Stimme bleibt eure.</p></li>
-      <li><span class="k">kein</span><p><b>Fertiger Videoschnitt</b>Die KI hört das Video, sie sieht es nicht. Rohschnitt, Untertitel, Schnittliste ja – Take-Auswahl, Dramaturgie, Farbe bleibt beim Cutter.</p></li>
-      <li><span class="k">kein</span><p><b>Zugriff auf alles</b>Nur Systeme, die ihr schriftlich freigebt. Werbekonten lesend. Mail nur als Entwurf. Für unsere Arbeit an euren Daten schließen wir einen Auftragsverarbeitungsvertrag mit euch.</p></li>
+      <li><span class="k">kein</span><p><b>Stunden- oder Prozentversprechen</b>Was das System bei euch bringt, messen wir bei euch – und schreiben es nicht vorher auf eine Website.</p></li>
+      <li><span class="k">kein</span><p><b>Autonomer Agent, der allein postet</b>Was nach außen geht, gibt bei euch ein Mensch frei. Ausnahmen legen wir mit euch fest und testen sie.</p></li>
+      <li><span class="k">kein</span><p><b>„KI schreibt eure Inhalte“</b>Ideen, Ton und Gespür bleiben bei euch. Das System liefert Vorarbeit, Entwürfe und Ordnung.</p></li>
+      <li><span class="k">kein</span><p><b>Zugriff auf alles</b>Nur Tools, die ihr schriftlich freigebt. Insights lesend, Kundenkommunikation nur als Entwurf.</p></li>
     </ul>
   </div>
 </section>
@@ -759,16 +797,16 @@ Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreib
       <h2>Was uns jeder fragt</h2>
     </div>
     <div class="faq rv">
-      <details><summary>Wir haben KI schon probiert. Hat nichts gebracht.</summary><p>Das ist der Normalfall – 95 % der Projekte enden so. Der Fehler lag fast nie am Werkzeug, sondern daran, dass es nichts über die Firma wusste und an nichts angeschlossen war. Genau das ist unsere Arbeit.</p></details>
-      <details><summary>Reicht nicht ChatGPT oder Claude im Browser?</summary><p>Wenn ihr dort Kundendossiers hinterlegt habt, Reports gegen euer echtes Werbekonto zieht und wiederkehrende Aufgaben als feste Befehle laufen – ja. Wenn nicht, ist genau dieser Teil das, was wir einrichten.</p></details>
-      <details><summary>Wir haben schon Zapier, Make oder n8n — wozu das?</summary><p>Behaltet sie. Das sind feste Wenn-dann-Ketten, gut für immer Gleiches. Wir setzen dort an, wo ein Mensch lesen und formulieren muss: Anfragen, Support, Angebote. Die Inhalte sind jedes Mal anders, die Schritte nicht – lesen, zuordnen, Entwurf schreiben. Wenn euer Werkzeug das schon zuverlässig kann, braucht ihr uns dafür nicht.</p></details>
-      <details><summary>Wie kommt das bei unserem Team an – und worauf greift es zu?</summary><p>Es greift nur auf das zu, was ihr schriftlich freigebt – nicht auf alles, was technisch erreichbar wäre. Es sendet nie selbst; jeder Entwurf liegt zur Prüfung bei einem Menschen aus eurem Team, bevor etwas rausgeht. Wir starten mit einem einzigen Ablauf und einer Person, nicht mit dem ganzen Team auf einmal – so seht ihr, wie es sich anfühlt, bevor mehr dranhängt.</p></details>
-      <details><summary>Was ist mit unseren Daten?</summary><p>Dateien und Firmenwissen bleiben auf eurem Rechner. Für jede Aufgabe gehen nur die nötigen Texte verschlüsselt an das Modell. Wir arbeiten mit Claude Code von Anthropic – <b>den Vertrag dafür schließt ihr selbst</b>, im Geschäftstarif ohne Training auf euren Daten. Kein Zugang läuft über unsere Zugangsschlüssel. Für alles, was wir bei euch einrichten und betreuen, gibt es einen Auftragsverarbeitungsvertrag mit uns. Zugriff hat das System nur auf Ordner und Konten, die ihr schriftlich freigebt.</p></details>
-      <details><summary>Können wir das nicht selbst bauen?</summary><p>Könnt ihr. Die Frage ist, wer es in sechs Wochen pflegt, wenn sich eine Schnittstelle ändert. Daran sterben die meisten Eigenbauten – nicht am Aufbau, am Betrieb.</p></details>
-      <details><summary>Was kostet das?</summary><p>Das sagen wir im Gespräch, wenn wir wissen, wie viele Stunden bei euch wohin gehen. Vorher wäre jede Zahl geraten. Bezahlt wird vor dem Aufbau, in einer Summe – dafür bekommt ihr ein eingerichtetes System statt einer Präsentation.</p></details>
-      <details><summary>Wir sind nur fünf Leute. Lohnt sich das?</summary><p>Wenn bei euch jede Woche sechs oder mehr Stunden gut bezahlter Arbeit in Angebote, Reports, Texte oder Sichten gehen: ja. Wenn nicht, sagen wir euch das im Erstgespräch und ihr spart euch das Geld.</p></details>
-      <details><summary>Läuft das auf unseren Rechnern?</summary><p>Die Oberfläche läuft heute auf dem Mac. Eure übrigen Programme sind davon unberührt – Microsoft 365, Google Workspace, Shopify, Schnittprogramme werden angebunden, nicht ersetzt. Wenn bei euch nur Windows steht, sagt es im Erstgespräch; dann klären wir vorher, was geht und was nicht, statt es hinterher zu entdecken.</p></details>
-      <details><summary>Ihr arbeitet remote. Und wenn etwas hakt?</summary><p>Betrieb läuft remote, das ist der Normalfall. Fester Support-Kanal, Erstantwort innerhalb eines Werktags, monatlicher Call vormittags. Das Setup gehört euch – nach der Mindestlaufzeit könnt ihr kündigen und es läuft weiter.</p></details>
+      <details><summary>Wir nutzen ChatGPT oder Claude schon jeden Tag. Was bringt ihr Neues?</summary><p>Ihr kennt die Werkzeuge. Was meist fehlt, ist das Dazwischen: ein gemeinsamer Stand für das ganze Team, Anbindung an eure Tools und Abläufe, die nicht jeder neu promptet. Genau das bauen wir.</p></details>
+      <details><summary>Wir haben eigene GPTs und Claude-Projekte. Reicht das nicht?</summary><p>Das ist Stufe 3 – ein guter Anfang. Der Schritt zu Stufe 4: Die Ergebnisse landen nicht mehr per Copy-Paste in euren Tools, sondern direkt dort, und das ganze Team arbeitet mit denselben Projekten und Regeln.</p></details>
+      <details><summary>Wir haben schon Make, Zapier oder n8n.</summary><p>Behaltet sie. Das sind feste Wenn-dann-Ketten, gut für immer Gleiches. Wir setzen dort an, wo jemand lesen, verstehen und formulieren muss – und verbinden beides, wo es sinnvoll ist.</p></details>
+      <details><summary>Können wir das nicht selbst bauen?</summary><p>Könnt ihr. Die Fragen sind: Wer hat die Zeit dafür neben den Kunden – und wer pflegt es, wenn sich eine Schnittstelle ändert? Wir bauen es, ihr behaltet es, und ihr seht, wie es gebaut ist.</p></details>
+      <details><summary>Welche Tools bindet ihr an?</summary><p>Tools mit offizieller Anbindung an Claude oder mit offener Schnittstelle – etwa Planungs-, Projekt- und Ablage-Tools. Ob eine Anbindung bei euch das Nötige kann, prüfen wir vor der Zusage. Was wir nicht vorher getestet haben, sagen wir euch im Hebel-Check offen.</p></details>
+      <details><summary>Was ist mit den Daten unserer Kunden?</summary><p>Claude läuft in eurem eigenen Team-Konto bei Anthropic, unter eurem Vertrag. Wir greifen nur auf das zu, was ihr freigebt, und schließen dafür vorher einen Auftragsverarbeitungsvertrag mit euch.</p></details>
+      <details><summary>Was kostet das?</summary><p>Das sagen wir im Gespräch, wenn wir wissen, was bei euch gebaut werden soll. Bezahlt wird vor dem Aufbau, in einer Summe. Was ihr dafür bekommt, steht vorher schriftlich – mit Abnahmetests.</p></details>
+      <details><summary>Ich bin allein. Passt das trotzdem?</summary><p>Wenn du laufend für sechs oder mehr Kunden Content machst: ja. Dann liegt das Kundenwissen nicht nur in deinem Kopf, und die Routine läuft über das System.</p></details>
+      <details><summary>Habt ihr Referenzen?</summary><p>Noch nicht. Wir sind am Anfang. Deshalb zeigen wir euch im Hebel-Check, wie wir selbst arbeiten, und legen vorher fest, woran ihr das Ergebnis messt.</p></details>
+      <details><summary>Ihr arbeitet remote. Und wenn etwas hakt?</summary><p>Remote ist der Normalfall; für Termine vor Ort sind wir in Kiel. Nach der Abnahme läuft das System in eurem Claude-Konto. Ob und wie wir es danach betreuen, vereinbaren wir mit euch.</p></details>
     </div>
   </div>
 </section>
@@ -777,33 +815,38 @@ Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreib
 <section class="form-sec" id="kontakt">
   <div class="wrap">
     <div class="rv">
-      <span class="eyebrow">Erstgespräch</span>
-      <h2>30 Minuten. Fünf Fragen. Eine ehrliche Antwort.</h2>
-      <p class="lead" style="margin-top:18px">Wir schauen gemeinsam, wo bei euch Stunden verschwinden und ob ein KI-Agenten-System das löst. Wenn nicht, sagen wir es.</p>
+      <span class="eyebrow">Hebel-Check</span>
+      <h2>30 Minuten. Eure Abläufe. Eine ehrliche Antwort.</h2>
+      <p class="lead" style="margin-top:18px">Wir schauen gemeinsam, wo Claude bei euch den größten Hebel hätte – oder ob es nicht passt.</p>
       <ul class="steps-list">
         <li><span class="n">01</span><span>Ihr füllt das Formular aus – zwei Minuten.</span></li>
         <li><span class="n">02</span><span>Wir melden uns innerhalb eines Werktags mit einem Terminvorschlag.</span></li>
-        <li><span class="n">03</span><span>Im Gespräch rechnen wir gemeinsam aus, was die verlorene Zeit heute kostet.</span></li>
+        <li><span class="n">03</span><span>Bringt einen echten Ablauf mit – wir zeigen, wo das System ansetzen würde.</span></li>
       </ul>
     </div>
     <form id="lead" action="https://api.web3forms.com/submit" method="post">
       <input type="hidden" name="access_key" value="d80ca872-5dbf-42a1-b02e-2f59169b417d">
-      <input type="hidden" name="subject" value="Erstgespräch – Anfrage über in2software.de">
-      <input type="hidden" name="from_name" value="Website in2software.de">
+      <input type="hidden" name="subject" value="Hebel-Check – Anfrage über die Website">
+      <input type="hidden" name="from_name" value="Website In2Software">
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="f2">
         <label>Name<input name="name" type="text" required autocomplete="name"></label>
-        <label>Unternehmen<input name="firma" type="text" required autocomplete="organization"></label>
+        <label>Agentur<input name="firma" type="text" required autocomplete="organization"></label>
       </div>
       <div class="f2">
         <label>E-Mail<input name="email" type="email" required autocomplete="email"></label>
         <label>Telefon<input name="tel" type="tel" autocomplete="tel"></label>
       </div>
-      <label>Wofür gehen bei euch die meisten Stunden drauf, die niemand bezahlt sehen will?<textarea name="zeitfresser" required placeholder="z. B. Angebote schreiben, Monatsreports bauen, Videos sichten, Produkttexte …"></textarea></label>
-      <label>Womit arbeitet ihr täglich?
-        <select name="systeme"><option value="">Bitte wählen</option><option>Google Workspace / Drive</option><option>Microsoft 365</option><option>Shopify / Shopware + Werbekonten</option><option>HubSpot / Pipedrive / Notion</option><option>Schnittprogramme (Premiere, DaVinci, CapCut)</option><option>Anderes</option></select>
-      </label>
-      <button class="btn btn-primary" type="submit" id="send">Erstgespräch anfragen →</button>
+      <label>Wo hakt die KI-Arbeit bei euch heute am meisten?<textarea name="zeitfresser" required placeholder="z. B. jeder promptet anders, Copy-Paste zwischen Chat und Planungstool, Reports, Onboarding neuer Kunden …"></textarea></label>
+      <div class="f2">
+        <label>Für wie viele Kunden macht ihr laufend Content?
+          <select name="kunden" required><option value="">Bitte wählen</option><option>1–5 (dann passt es meist noch nicht)</option><option>6–15</option><option>16–40</option><option>mehr als 40</option></select>
+        </label>
+        <label>Womit arbeitet ihr täglich?
+          <select name="systeme"><option value="">Bitte wählen</option><option>Metricool / Later / Planable</option><option>ClickUp / Asana / awork</option><option>Notion</option><option>Google Workspace / Drive</option><option>Microsoft 365</option><option>Make / Zapier / n8n</option><option>Anderes</option></select>
+        </label>
+      </div>
+      <button class="btn btn-primary" type="submit" id="send">Hebel-Check anfragen →</button>
       <div class="fine">Versand über Web3Forms (USA) – <a href="datenschutz.html#kontakt">Datenschutz</a>. Kein Newsletter, keine Werbung.</div>
       <div class="done" id="done">
         <b>Anfrage übermittelt.</b> Wir melden uns innerhalb eines Werktags mit einem Terminvorschlag.
@@ -824,10 +867,10 @@ Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreib
 <footer>
   <div class="wrap">
     <div class="row">
-      <div><div class="logo"><svg class="mark" width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lqBase" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9DCFF"/><stop offset=".55" stop-color="#4FAAF9"/><stop offset="1" stop-color="#1B82E8"/></linearGradient><linearGradient id="lqRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".45" stop-color="#fff" stop-opacity=".15"/><stop offset="1" stop-color="#fff" stop-opacity=".7"/></linearGradient><radialGradient id="lqShade" cx=".78" cy=".85" r=".7"><stop offset="0" stop-color="#0B3A66" stop-opacity=".22"/><stop offset="1" stop-color="#0B3A66" stop-opacity="0"/></radialGradient><radialGradient id="lqKnob" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#E4F4FF"/><stop offset="1" stop-color="#A9D6F7"/></radialGradient><linearGradient id="lqTrack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2A40" stop-opacity=".92"/><stop offset="1" stop-color="#070C16" stop-opacity=".92"/></linearGradient><filter id="lqGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4"/></filter><filter id="lqSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.6"/></filter></defs><rect x="4" y="6" width="56" height="56" rx="16" fill="#2A8DEE" fill-opacity=".7" filter="url(#lqGlow)"/><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#lqBase)"/><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#lqShade)"/><ellipse cx="24.16" cy="12.96" rx="16.8" ry="5.6000000000000005" fill="#fff" fill-opacity=".55" filter="url(#lqSoft)"/><rect x="4.9" y="4.9" width="54.2" height="54.2" rx="15.1" fill="none" stroke="url(#lqRim)" stroke-width="1.6"/><rect x="6.34" y="6.34" width="51.32" height="51.32" rx="13.66" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1"/><rect x="12" y="22" width="40" height="20" rx="10" fill="url(#lqTrack)"/><rect x="12.7" y="22.7" width="38.6" height="18.6" rx="9.3" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1"/><ellipse cx="24" cy="25.5" rx="8" ry="1.6" fill="#fff" fill-opacity=".14"/><circle cx="42" cy="33" r="7.4" fill="#0A0E17" fill-opacity=".35" filter="url(#lqSoft)"/><circle cx="42" cy="32" r="7" fill="url(#lqKnob)"/><circle cx="42" cy="32" r="6.5" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width=".9"/><ellipse cx="40.6" cy="29.2" rx="3.2" ry="1.7" fill="#fff" fill-opacity=".85"/><path d="M37.2 35.2a6 6 0 0 0 9.6 0" stroke="#7CC4FF" stroke-opacity=".7" stroke-width=".9" fill="none"/></svg><span class="word">In<span class="two">2</span>Software</span></div><div style="margin-top:10px">KI-Agenten-Systeme für inhabergeführte Unternehmen · Kiel · remote</div></div>
+      <div><div class="logo"><svg class="mark" width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lqBase" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9DCFF"/><stop offset=".55" stop-color="#4FAAF9"/><stop offset="1" stop-color="#1B82E8"/></linearGradient><linearGradient id="lqRim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".45" stop-color="#fff" stop-opacity=".15"/><stop offset="1" stop-color="#fff" stop-opacity=".7"/></linearGradient><radialGradient id="lqShade" cx=".78" cy=".85" r=".7"><stop offset="0" stop-color="#0B3A66" stop-opacity=".22"/><stop offset="1" stop-color="#0B3A66" stop-opacity="0"/></radialGradient><radialGradient id="lqKnob" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#E4F4FF"/><stop offset="1" stop-color="#A9D6F7"/></radialGradient><linearGradient id="lqTrack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2A40" stop-opacity=".92"/><stop offset="1" stop-color="#070C16" stop-opacity=".92"/></linearGradient><filter id="lqGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4"/></filter><filter id="lqSoft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.6"/></filter></defs><rect x="4" y="6" width="56" height="56" rx="16" fill="#2A8DEE" fill-opacity=".7" filter="url(#lqGlow)"/><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#lqBase)"/><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#lqShade)"/><ellipse cx="24.16" cy="12.96" rx="16.8" ry="5.6000000000000005" fill="#fff" fill-opacity=".55" filter="url(#lqSoft)"/><rect x="4.9" y="4.9" width="54.2" height="54.2" rx="15.1" fill="none" stroke="url(#lqRim)" stroke-width="1.6"/><rect x="6.34" y="6.34" width="51.32" height="51.32" rx="13.66" fill="none" stroke="#fff" stroke-opacity=".18" stroke-width="1"/><rect x="12" y="22" width="40" height="20" rx="10" fill="url(#lqTrack)"/><rect x="12.7" y="22.7" width="38.6" height="18.6" rx="9.3" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1"/><ellipse cx="24" cy="25.5" rx="8" ry="1.6" fill="#fff" fill-opacity=".14"/><circle cx="42" cy="33" r="7.4" fill="#0A0E17" fill-opacity=".35" filter="url(#lqSoft)"/><circle cx="42" cy="32" r="7" fill="url(#lqKnob)"/><circle cx="42" cy="32" r="6.5" fill="none" stroke="#fff" stroke-opacity=".8" stroke-width=".9"/><ellipse cx="40.6" cy="29.2" rx="3.2" ry="1.7" fill="#fff" fill-opacity=".85"/><path d="M37.2 35.2a6 6 0 0 0 9.6 0" stroke="#7CC4FF" stroke-opacity=".7" stroke-width=".9" fill="none"/></svg><span class="word">In<span class="two">2</span>Software</span></div></div>
       <ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li><li><a href="mailto:kontakt@in2software.de">kontakt@in2software.de</a></li></ul>
     </div>
-    <p class="disclaimer">In2Software · Philipp Hallmann · Holtenauer Straße 59 · 24105 Kiel · kontakt@in2software.de. Dieses Angebot richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB. Ergebnisse hängen von der Umsetzung im Unternehmen ab; wir versprechen keine bestimmten Einsparungen. Anthropic, Meta, Google und weitere genannte Marken sind Eigentum ihrer jeweiligen Inhaber; es besteht keine Partnerschaft.</p>
+    <p class="disclaimer">In2Software · Philipp Hallmann · Holtenauer Straße 59 · 24105 Kiel · kontakt@in2software.de. Dieses Angebot richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB. Claude und Anthropic sind Marken von Anthropic PBC; es besteht keine Partnerschaft.</p>
   </div>
 </footer>
 
@@ -836,14 +879,14 @@ Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreib
 (function(){
   var el=document.getElementById('typer'); if(!el) return;
   var lines=[
-    ['cmd','/report kunde-a september'],
-    ['','  meta ads · google ads lesen … '],
-    ['ok','  ✓ 4 Kampagnen, 12 Anzeigengruppen'],
-    ['','  Hausvorlage füllen … '],
-    ['ok','  ✓ _freigabe/report-kunde-a-09.pdf'],
-    ['','  Zeit: 0:25 h  (vorher 2:40 h)'],
-    ['cmd','/content briefing-kunde-b.md'],
-    ['ok','  ✓ 20 Entwürfe in Tonalität „kunde-b"'],
+    ['cmd','/onboarding kunde-neu'],
+    ['','  notizen · ablage lesen … '],
+    ['ok','  ✓ profil, ton, no-gos'],
+    ['ok','  ✓ projekt in notion'],
+    ['cmd','/redaktionsplan kunde-b'],
+    ['','  wissen · insights … '],
+    ['ok','  ✓ 16 entwürfe in metricool'],
+    ['','  → freigabe: euer team'],
   ];
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var i=0,j=0,html='';
@@ -861,76 +904,126 @@ Wir richten euch einen Assistenten ein, der die wiederkehrende Lese- und Schreib
   }
   tick();
 })();
-// cowork demo
-(function(){
-  var rig=document.getElementById('rig2'); if(!rig) return;
-  var log=document.getElementById('cwlog'), box=document.getElementById('cwbox'), send=document.getElementById('cwsend');
-  var nodes=rig.querySelectorAll('.hn'), wires=rig.querySelectorAll('.wire'), tabs=document.querySelectorAll('.task');
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var CASES=[
-    {input:'Schneide das Video für Freitag – das Interview mit Frau Meyer, 90 Sekunden fürs Reel.',
-     nodes:[['Ablage','drive · sheets'],['Kalender','freitag 10:00'],['Video','lokal · roh'],['Schnitt','ffmpeg · lokal'],['Transkript','whisper · lokal'],['Freigabe','_freigabe/']],
-     steps:[[0,'Suche „Interview Meyer" in der Ablage','interview-meyer-roh.mov · 14:32 min'],[1,'Termin „Reel Meyer" am Freitag gefunden','Format: Hochkant, 90 Sek.'],[4,'Transkribiere lokal','2.180 Wörter, Deutsch'],[4,'Markiere Füllwörter, Pausen, Versprecher','41 Stellen'],[2,'Wähle Kernaussage laut Briefing','3 Passagen, 88 Sek.'],[3,'Schneide und brenne Untertitel ein','rohschnitt-freitag.mp4 · untertitel.srt'],[5,'Lege alles zur Freigabe ab','']],
-     result:{t:'Rohschnitt liegt bereit',files:['rohschnitt-freitag.mp4 (88 Sek.)','untertitel.srt · schnittliste.md','3 Shorts-Vorschläge mit Timecodes'],n:'Feinschnitt und Freigabe: euer Cutter. Zeit: 6 min statt 2,5 h.',b:['Ansehen','Im Schnittprogramm öffnen']}},
-    {input:'Mach die Buchhaltung für September fertig für den Steuerberater.',
-     nodes:[['Mail','belege · lesend'],['Bank','umsätze · lesend'],['Ablage','rechnungen'],['Buchhaltung','datev · lexoffice'],['Kontenrahmen','eure regeln'],['Freigabe','_freigabe/']],
-     steps:[[0,'Sammle Eingangsrechnungen aus dem Postfach','23 Belege als PDF'],[2,'Lese Ausgangsrechnungen aus der Ablage','11 Rechnungen, 3 offen'],[1,'Gleiche mit Bankumsätzen ab','47 Buchungen, 44 zugeordnet'],[1,'Buchungen ohne Beleg','3: Amazon 89,90 · Bahn 132,40 · Adobe 71,36','warn'],[4,'Vorkontierung nach eurem Kontenrahmen','58 Positionen, Entwurf'],[3,'Export im Steuerberater-Format vorbereitet','buchhaltung-09.csv'],[5,'Lege alles zur Freigabe ab','']],
-     result:{t:'September vorbereitet',files:['buchhaltung-09.csv (DATEV-Format)','fehlende-belege.md (3)','offene-forderungen.md (3 · 4.120 €)'],n:'Prüfen und buchen: euer Steuerberater. Zeit: 12 min statt 4 h.',b:['An Steuerberater senden','Öffnen']}},
-    {input:'Prüf meine Mails der Woche. Hab ich was vergessen? Anfragen, Verträge, Termine – ist alles raus?',
-     nodes:[['Mail','postfach · lesend'],['Kalender','termine'],['CRM','kontakte · deals'],['Verträge','ablage · entwürfe'],['Aufgaben','notion · asana'],['Freigabe','_freigabe/']],
-     steps:[[0,'Lese 212 Mails dieser Woche','38 warten auf eine Antwort von dir'],[2,'Anfragen ohne Antwort','4 offen, älteste seit Dienstag (Firma Berg)','warn'],[3,'Verträge: alles gesendet?','Vertrag Lange liegt seit Montag als Entwurf – nie gesendet','warn'],[1,'Termine ohne Bestätigung','2: Do 14:00 · Fr 09:30','warn'],[4,'Zusagen aus Mails gegen Aufgabenliste','6 Zusagen, 2 fehlen in den Aufgaben'],[0,'Schreibe Antwortentwürfe','4 Entwürfe'],[5,'Lege alles zur Freigabe ab','']],
-     result:{t:'Wochen-Check fertig',files:['wochen-check.md: 4 offene Anfragen · 1 ungesendeter Vertrag · 2 unbestätigte Termine','4 Antwortentwürfe (nicht gesendet)','2 neue Aufgaben vorgeschlagen'],n:'Senden und bestätigen: du. Zeit: 3 min statt 1,5 h.',b:['Entwürfe prüfen','Aufgaben übernehmen']}}
-  ];
-  var cur=0,timer=null,token=0,running=false;
-  function esc(s){return String(s).replace(/</g,'&lt;')}
-  function setNodes(c){nodes.forEach(function(n,i){n.classList.remove('lit','used');n.querySelector('b').textContent=c.nodes[i][0];n.querySelector('small').textContent=c.nodes[i][1]});wires.forEach(function(w){w.classList.remove('on')})}
-  function light(i){nodes.forEach(function(n){if(n.classList.contains('lit')){n.classList.remove('lit');n.classList.add('used')}});nodes[i].classList.add('lit');wires[i].classList.add('on')}
-  function scrollLog(){log.scrollTop=log.scrollHeight}
-  function bar(i,p){tabs.forEach(function(t,k){t.querySelector('.bar i').style.width=(k===i?p:0)+'%'})}
-  var SPEED=/[?&]fast/.test(location.search)?.08:1;
-  function wait(ms,tk){return new Promise(function(r){timer=setTimeout(function(){if(tk===token)r()},ms*SPEED)})}
-  async function play(i){
-    token++; var tk=token; cur=i; running=true;
-    tabs.forEach(function(t,k){t.setAttribute('aria-selected',k===i?'true':'false')});
-    var c=CASES[i]; setNodes(c); log.innerHTML=''; send.classList.add('off'); bar(i,0);
-    // type into input
-    if(reduce){box.innerHTML=esc(c.input)}else{
-      var t0=Date.now(), per=26*SPEED, k=0;
-      while(k<c.input.length){if(tk!==token)return;k=Math.min(c.input.length,Math.floor((Date.now()-t0)/per)+1);box.innerHTML=esc(c.input.slice(0,k))+'<span class="cur"></span>';await wait(per,tk)}
-    }
-    send.classList.remove('off'); await wait(500,tk); if(tk!==token)return;
-    box.innerHTML='<span class="ph">Beschreib die Aufgabe wie einem Kollegen …</span>'; send.classList.add('off');
-    log.innerHTML='<div class="u">'+esc(c.input)+'</div><div class="a"><div class="who">KI-Agenten-System</div><div class="think">arbeitet</div></div>';
-    var a=log.querySelector('.a'); scrollLog(); await wait(900,tk); if(tk!==token)return;
-    a.querySelector('.think').remove();
-    var total=c.steps.length+1;
-    for(var s=0;s<c.steps.length;s++){
-      if(tk!==token)return;
-      var st=c.steps[s]; light(st[0]);
-      var el=document.createElement('div'); el.className='st'; el.innerHTML='<span class="ic"></span><span>'+esc(st[1])+(st[2]?'<br><span class="r"></span>':'')+'</span>';
-      a.appendChild(el); scrollLog(); bar(i,Math.round((s+.5)/total*100));
-      await wait(reduce?0:650+Math.random()*350,tk); if(tk!==token)return;
-      el.classList.add(st[3]==='warn'?'warn':'ok'); if(st[2]){el.querySelector('.r').textContent=st[2]} scrollLog();
-      await wait(reduce?0:260,tk);
-    }
-    if(tk!==token)return;
-    nodes.forEach(function(n){if(n.classList.contains('lit')){n.classList.remove('lit');n.classList.add('used')}});
-    var r=document.createElement('div'); r.className='res'; r.innerHTML='<b>'+esc(c.result.t)+'</b>'+c.result.files.map(function(f){return '<div class="f">'+esc(f)+'</div>'}).join('')+'<div class="n">'+esc(c.result.n)+'</div><div class="btns"><span>'+esc(c.result.b[0])+'</span><span>'+esc(c.result.b[1])+'</span></div>';
-    a.appendChild(r); scrollLog(); bar(i,100);
-    running=false;
-    await wait(reduce?9000:6500,tk); if(tk!==token)return;
-    play((i+1)%CASES.length);
-  }
-  tabs.forEach(function(t){t.addEventListener('click',function(){clearTimeout(timer);play(+t.dataset.t)})});
-  var started=false; var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!started){started=true;play(0);o.disconnect()}})},{threshold:.25});
-  o.observe(rig);
-})();
 // tabs
 document.querySelectorAll('.tab').forEach(function(b){b.addEventListener('click',function(){
   document.querySelectorAll('.tab').forEach(function(x){x.setAttribute('aria-selected','false')});
   document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('on')});
   b.setAttribute('aria-selected','true'); document.getElementById(b.dataset.p).classList.add('on');
+  if(b.dataset.cx&&window.cxSet) window.cxSet(+b.dataset.cx);
 })});
+// Mods in Claude: Nachbau Code-Bereich, je Agenturart drei Schritte
+(function(){
+  var root=document.getElementById('cx'); if(!root) return;
+  var $=function(id){return document.getElementById(id)};
+  var B=function(a,p){return '<div class="cx-bt">'+a.map(function(x,i){return i===p?'<button type="button" class="p" data-next>'+x+'</button>':'<span>'+x+'</span>'}).join('')+'</div>'};
+  var X=[
+  { ses:[0,0,1], path:'~/Agentur/kunde-b', side:[['Wochenplanung KW 47','Kunde B · läuft'],['Kommentare','Kunde A · 4 offen'],['Monatsbericht Oktober','Kunde C · bereit'],['Onboarding','Kunde D · bereit']],
+    steps:[
+    {say:'Wochenplanung: Claude schlägt Themen aus Kundenwissen und Zahlen vor. Du entscheidest per Knopf.',
+     u:'Plan die KW 47 für Kunde B', tools:['<b>wissen_laden</b> · kunde-b · ton, formate, no-gos','<b>insights_lesen</b> · oktober · lesend','<b>themen_vorschlagen</b> · 6 themen'],
+     a:'Sechs Themen stehen rechts. Eins braucht deine Entscheidung.',
+     band:'<b>Kunde B</b><span>KW 47</span><em>Themen 1</em><span>Freigeben 0</span>',
+     pane:'<div class="cx-mt"><span class="on">Wochenplanung</span><span>Freigabe</span><span>Kommentare</span></div><div class="cx-ph">Kunde B · KW 47 <small>6 Themen</small></div>'+
+       '<div class="cx-it"><div class="cx-row"><b>Karussell: 5 Fehler beim Hautcheck</b><small>Karussells im Oktober vorne</small></div><div class="cx-pr"><i style="width:82%"></i></div></div>'+
+       '<div class="cx-it"><div class="cx-row"><b>Reel: Behind the Scenes Studio</b><small>Reels über 30 s schwächer</small></div><div class="cx-pr"><i style="width:46%"></i></div></div>'+
+       '<div class="cx-it dim"><b>+ 3 weitere Themen</b></div>'+
+       '<div class="cx-it"><b>Aktionstag Sa 21.11.</b><small>Rabattaktion? Steht nicht im Kundenwissen.</small><div class="cx-warn">Braucht deine Entscheidung.</div>'+B(['frei','raus'],0)+'</div>'},
+    {say:'Freigabe: Claude legt die Entwürfe im Planungstool an. Du siehst sie durch und gibst frei – erst dann wird eingeplant.',
+     click:'Knopf „frei“ · Aktionstag 21.11.', tools:['<b>entwuerfe_anlegen</b> · metricool · 6 entwürfe · nicht eingeplant','<b>pruefen</b> · no-gos, länge, hashtags ok'],
+     a:'Sechs Entwürfe liegen in Metricool. Nichts ist eingeplant.',
+     band:'<b>Kunde B</b><span>KW 47</span><span>Themen 0</span><em>Freigeben 6</em>',
+     pane:'<div class="cx-mt"><span>Wochenplanung</span><span class="on">Freigabe 6</span><span>Kommentare</span></div><div class="cx-ph">Zur Freigabe <small>Kunde B</small></div>'+
+       '<div class="cx-it"><div class="cx-row"><b>Mi 18.11. · Karussell</b><small>Instagram</small></div><small>5 Fehler beim Hautcheck – Slide 1 bis 6</small><div class="cx-bt"><span>Ansehen</span><span>Ändern</span></div></div>'+
+       '<div class="cx-it"><div class="cx-row"><b>Fr 20.11. · Reel</b><small>Instagram · TikTok</small></div><small>Behind the Scenes · Skript 0:24</small><div class="cx-bt"><span>Ansehen</span><span>Ändern</span></div></div>'+
+       '<div class="cx-it dim"><b>+ 4 weitere</b></div>'+B(['Alle 6 freigeben und einplanen','Zurück an Claude'],0)},
+    {say:'Kommentare: Antwortentwürfe im Ton des Kunden. Kritisches markiert Claude und beantwortet es nicht.',
+     click:'Freigabe durch dich · 6 Posts', tools:['<b>metricool</b> · 6 posts eingeplant · ausgelöst durch deine freigabe, nicht durch claude','<b>kommentare_lesen</b> · kunde a · 4 neu'],
+     a:'KW 47 ist eingeplant. Bei Kunde A warten vier Kommentare, einer ist kritisch.',
+     band:'<b>Kunde A</b><span>Freigeben 0</span><em>Kommentare 4</em>',
+     pane:'<div class="cx-mt"><span>Wochenplanung</span><span>Freigabe</span><span class="on">Kommentare 4</span></div><div class="cx-ph">Kommentare · Kunde A <small>Instagram</small></div>'+
+       '<div class="cx-it"><small>„Wann habt ihr samstags offen?“</small><b>Samstags von 9 bis 14 Uhr – komm gern vorbei! 🙂</b>'+B(['Als Antwort übernehmen','Ändern'],0)+'</div>'+
+       '<div class="cx-it"><small>„Letzte Woche wurde mein Termin einfach abgesagt …“</small><div class="cx-warn">Beschwerde – kein Entwurf. Geht an den Account-Manager.</div></div>'+
+       '<div class="cx-it dim"><b>+ 2 weitere</b></div>'}
+    ]},
+  { ses:[0,1,2], path:'~/Agentur/lena-b', side:[['Posts aus Sprachnachricht','Lena B. · läuft'],['Karussell: Preisgespräch','Lena B. · bereit'],['Freigabeschleife','Tom K. · 3 Fassungen'],['Stimme pflegen','Tom K. · bereit']],
+    steps:[
+    {say:'Skript-Werkstatt: Aus einer Sprachnachricht werden Entwürfe in der Stimme der Kundin. Die Hausregeln prüft der Mod sichtbar mit.',
+     u:'Mach aus Lenas Sprachnachricht drei LinkedIn-Posts', tools:['<b>transkribieren</b> · 4:12 min','<b>stimme_laden</b> · lena-b · duzt, kurze sätze, keine emojis','<b>entwuerfe_schreiben</b> · 3 posts · je 3 hooks'],
+     a:'Drei Entwürfe stehen. In Post 2 steht eine Zahl ohne Beleg.',
+     band:'<b>Lena B.</b><span>LinkedIn</span><em>Hooks wählen 3</em>',
+     pane:'<div class="cx-mt"><span class="on">Skript</span><span>Karussell</span><span>Fassungen</span></div><div class="cx-ph">Post 1 · Preisgespräche <small>Lena B.</small></div>'+
+       '<div class="cx-it"><small>Hook wählen</small><div class="cx-bt"><span>A · 13 Wörter</span><span>B · 9 Wörter</span><span>C · 7 Wörter</span></div><b>„Ich habe drei Jahre zu billig verkauft. Hier ist, was ich geändert habe.“</b></div>'+
+       '<div class="cx-it"><div class="cx-chk"><i>✓</i> duzt · <i>✓</i> keine Emojis · <i>✓</i> unter 1.300 Zeichen<br><i class="w">!</i> Post 2, Satz 4: „80 % der Selbstständigen …“ – Quelle fehlt</div></div>'+B(['Hook A nehmen','Neu schreiben'],0)},
+    {say:'Karussell-Studio: Jede Aussage hat ein Faktenblatt. Was nicht belegt ist, steht als OFFEN da – nicht im Karussell.',
+     click:'Knopf „Hook A nehmen“', tools:['<b>karussell_bauen</b> · 6 slides · lena-b vorlage','<b>fakten_pruefen</b> · 5 belegt · 1 offen'],
+     a:'Karussell steht. Slide 4 bleibt leer, bis die Zahl belegt ist.',
+     band:'<b>Lena B.</b><span>Karussell</span><em>Offen 1</em>',
+     pane:'<div class="cx-mt"><span>Skript</span><span class="on">Karussell</span><span>Fassungen</span></div><div class="cx-ph">Preisgespräch in 6 Slides <small>Vorlage Lena</small></div>'+
+       '<div class="cx-tl"><i class="on">1</i><i>2</i><i>3</i><i class="x">4</i><i>5</i><i>6</i></div>'+
+       '<div class="cx-it"><b>Slide 1</b><small>„Ich habe drei Jahre zu billig verkauft.“ · Kontrast ok · 64 px</small></div>'+
+       '<div class="cx-it"><b>Faktenblatt</b><div class="cx-chk"><i>✓</i> Slide 2 – Lenas Preisliste 2023/2026<br><i>✓</i> Slide 3 – eigenes Erlebnis, Sprachnachricht 0:48<br><i class="w">OFFEN</i> Slide 4 – „80 % der Selbstständigen“</div></div>'+B(['Als Entwurf ablegen','Slide 4 streichen'],0)},
+    {say:'Fassungen: Welche Fassung gilt, wer hat was gesagt, was ist offen – aus Kommentaren und Mails an einer Stelle.',
+     click:'Knopf „Als Entwurf ablegen“', tools:['<b>ablegen</b> · drive/lena-b/entwuerfe','<b>fassungen_lesen</b> · tom-k · mail, doc-kommentare'],
+     a:'Bei Tom K. gibt es drei Fassungen. Fassung 3 gilt, ein Punkt ist offen.',
+     band:'<b>Tom K.</b><span>Freigabeschleife</span><em>Offen 1</em>',
+     pane:'<div class="cx-mt"><span>Skript</span><span>Karussell</span><span class="on">Fassungen</span></div><div class="cx-ph">Tom K. · Post Teamkultur <small>3 Fassungen</small></div>'+
+       '<div class="cx-it dim"><b>v1 · 10.11.</b><small>Tom: „zu weich, mehr Haltung“</small></div>'+
+       '<div class="cx-it dim"><b>v2 · 12.11.</b><small>Tom: „gut, aber ohne Firmennamen“</small></div>'+
+       '<div class="cx-it"><b>v3 · 13.11. · gilt</b><small>Offen: Bild fehlt noch</small><div class="cx-bt"><span>Ansehen</span><span>Vergleichen</span></div></div>'+
+       '<div class="cx-ok">Freigabe-Mail an Tom liegt als Entwurf bereit – du schickst sie ab.</div>'}
+    ]},
+  { ses:[0,1,1], path:'~/Agentur/studio', side:[['Drehtag 13.11.','Kunde A · 14 Clips'],['Brötchen um 5 Uhr','Kunde A · Schnitt'],['Kettlebell-Start','Kunde B · Vorschau'],['Titel & Kapitel','Kunde C · bereit']],
+    steps:[
+    {say:'Studio: Neue Clips vom Drehtag. Claude schlägt je Clip Kunde, Idee und Take vor. Du bestätigst per Knopf.',
+     u:'Sortier die neuen Clips', tools:['<b>eingang_sichten</b> · 14 clips · 12 vollständig','<b>vorschlag_schreiben</b> · 12 vorschläge'],
+     a:'12 Clips vom Drehtag sind da. Vorschläge stehen rechts, zwei laden noch.',
+     band:'<b>Studio</b><em>Zuordnen 12</em><span>Schneiden 0</span><span>Freigeben 1</span>',
+     pane:'<div class="cx-mt"><span class="on">Eingang 12</span><span>Schnitt</span><span>Freigabe</span></div><div class="cx-ph">Drehtag 13.11. <small>12 von 14</small></div>'+
+       '<div class="cx-it"><b>0001 · Tresen von oben</b><div class="cx-sel"><span>Kunde A ▾</span><span>Brötchen um 5 ▾</span><span>gut ▾</span></div></div>'+
+       '<div class="cx-it"><b>0002 · unscharf</b><div class="cx-sel"><span>Kunde A ▾</span><span>Brötchen um 5 ▾</span><span>aussortieren ▾</span></div></div>'+
+       '<div class="cx-it dim"><b>0013</b><small>lädt noch – kein Knopf, bis die Datei vollständig ist</small></div>'+B(['Alle 12 annehmen','Neu vorschlagen'],0)},
+    {say:'Schnitt-Pult: Claude baut den Rohschnitt aus dem Transkript. Du kürzt, wirfst raus oder zoomst – jeder Knopf ist eine Anweisung an Claude.',
+     click:'Knopf „Alle 12 annehmen“', tools:['<b>transkript</b> · wortgenau · 12 segmente','<b>schnittplan</b> · roh 105,9 s → 79,9 s','<b>pruefen</b> · 9:16, ton −14 LUFS'],
+     a:'Schnittplan steht. Segment 5 ist ein Take-Zweifelsfall.',
+     band:'<b>Kunde A</b><span>Brötchen um 5</span><em>Schneiden 1</em>',
+     pane:'<div class="cx-mt"><span>Eingang 0</span><span class="on">Schnitt</span><span>Freigabe</span></div><div class="cx-ph">Schnitt-Pult <small>79,9 s · 12 Segmente</small></div>'+
+       '<div class="cx-tl"><i>1</i><i>2</i><i>3</i><i>4</i><i class="on">5</i><i>6</i><i class="x">7</i><i>8</i><i>9</i><i>10</i><i>11</i><i>12</i></div>'+
+       '<div class="cx-it"><b>Segment 5 · Satz · 8,3 s</b><small>Take B ist ruhiger, Take A hat den besseren Satz</small><div class="cx-bt"><span>kürzen 0,2 s</span><span>raus</span><span>Zoom 1,1</span></div></div>'+B(['Rohschnitt rendern','Takes vergleichen'],0)},
+    {say:'Freigabe: Vorschau ansehen, dann freigeben oder sagen, was anders soll. Jede Fassung bleibt erhalten.',
+     click:'Knopf „Rohschnitt rendern“', tools:['<b>rendern</b> · 9:16 · untertitel · −14 LUFS','<b>titel_vorschlagen</b> · 3 varianten im kanalton'],
+     a:'Vorschau v1 liegt rechts. Titel-Varianten stehen darunter.',
+     band:'<b>Kunde A</b><span>Schneiden 0</span><em>Freigeben 1</em>',
+     pane:'<div class="cx-mt"><span>Eingang 0</span><span>Schnitt</span><span class="on">Freigabe 1</span></div><div class="cx-ph">Brötchen um 5 Uhr <small>v1 · 1:20</small></div>'+
+       '<div class="cx-it cx-pv"><div class="cx-thumb"></div><div><b>Vorschau v1</b><small>1:20 · Untertitel · −14,1 LUFS</small><div class="cx-bt" style="margin-top:6px"><span>Ansehen</span><span>Ändern</span></div></div></div>'+
+       '<div class="cx-it"><small>Titel · Variante 1 von 3</small><b>„Um 5 Uhr riecht die ganze Straße nach uns“</b></div>'+
+       B(['Freigeben','Ändern'],-1)+'<div class="cx-ok">Freigeben setzt nur den Status. Eingeplant wird im Planungstool – nach eurer Freigabe.</div>'}
+    ]}
+  ];
+  var cur=0, st=0, timer=null;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function render(){
+    var c=X[cur], s=c.steps[st];
+    $('cxPath').textContent=c.path;
+    $('cxSide').innerHTML=c.side.map(function(x,i){return '<div class="cx-s'+(i===c.ses[st]?' on':'')+'"><b>'+x[0]+'</b><small>'+x[1]+'</small></div>'}).join('');
+    var m='';
+    if(s.u) m+='<div class="cx-u cx-anim">'+s.u+'</div>';
+    if(s.click) m+='<div class="cx-click cx-anim">→ an Claude: '+s.click+'</div>';
+    m+=s.tools.map(function(t,i){return '<div class="cx-tool cx-anim" style="animation-delay:'+(reduce?0:150+i*180)+'ms">'+t+'</div>'}).join('');
+    m+='<div class="cx-a cx-anim" style="animation-delay:'+(reduce?0:150+s.tools.length*180)+'ms">'+s.a+'</div>';
+    $('cxMsgs').innerHTML=m;
+    $('cxBand').innerHTML=s.band;
+    $('cxPane').innerHTML='<div class="cx-anim" style="display:flex;flex-direction:column;gap:10px;animation-delay:'+(reduce?0:300)+'ms">'+s.pane+'</div>';
+    $('cxSay').textContent=s.say;
+    $('cxDots').innerHTML=c.steps.map(function(_,i){return '<button type="button" aria-pressed="'+(i===st)+'" data-st="'+i+'">'+(i+1)+'</button>'}).join('');
+    var nx=$('cxPane').querySelector('[data-next]'); if(nx) nx.addEventListener('click',function(){go(st+1,true)});
+    $('cxDots').querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){go(+b.dataset.st,true)})});
+  }
+  function go(i,user){ clearTimeout(timer); st=Math.max(0,Math.min(i,X[cur].steps.length-1)); render(); if(user){var f=$('cxDots').querySelector('[aria-pressed="true"]'); if(f&&root.contains(document.activeElement)===false&&document.activeElement===document.body) f.focus();} if(!user&&!reduce) auto(); }
+  function auto(){ clearTimeout(timer); timer=setTimeout(function(){ if(st<X[cur].steps.length-1) go(st+1); },7000); }
+  window.cxSet=function(i){ cur=i; go(0,true); };
+  render();
+  var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(!reduce)auto();o.disconnect()}})},{threshold:.4}); o.observe(root);
+})();
 // reveal
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rv').forEach(function(x){io.observe(x)});
@@ -941,10 +1034,10 @@ setTimeout(function(){document.querySelectorAll('.rv').forEach(function(x){x.cla
   var f=document.getElementById('lead'); if(!f) return;
   var send=document.getElementById('send'), done=document.getElementById('done'), fail=document.getElementById('fail'),
       draft=document.getElementById('draft'), mail=document.getElementById('mailto'), label=send.textContent;
-  function text(d){return 'Name: '+d.get('name')+'\nUnternehmen: '+d.get('firma')+'\nE-Mail: '+d.get('email')+'\nTelefon: '+d.get('tel')+'\nSysteme: '+d.get('systeme')+'\n\nZeitfresser:\n'+d.get('zeitfresser')}
+  function text(d){return 'Name: '+d.get('name')+'\nUnternehmen: '+d.get('firma')+'\nE-Mail: '+d.get('email')+'\nTelefon: '+d.get('tel')+'\nKunden laufend: '+d.get('kunden')+'\nSysteme: '+d.get('systeme')+'\n\nWo es hakt:\n'+d.get('zeitfresser')}
   function show(el){done.style.display='none';fail.style.display='none';el.style.display='block';el.scrollIntoView({behavior:'smooth',block:'center'})}
   function fallback(d){
-    var subject='Erstgespräch – '+d.get('firma'), body=text(d);
+    var subject='Hebel-Check – '+d.get('firma'), body=text(d);
     draft.value='An: kontakt@in2software.de\nBetreff: '+subject+'\n\n'+body;
     mail.href='mailto:kontakt@in2software.de?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
     send.disabled=false; send.textContent=label; show(fail);
@@ -955,7 +1048,7 @@ setTimeout(function(){document.querySelectorAll('.rv').forEach(function(x){x.cla
     var d=new FormData(f);
     if(d.get('botcheck')) return;
     if(/EINTRAGEN/.test(d.get('access_key'))){fallback(d);return}
-    d.set('subject','Erstgespräch – '+d.get('firma'));
+    d.set('subject','Hebel-Check – '+d.get('firma'));
     send.disabled=true; send.textContent='Wird gesendet …';
     var ctl=window.AbortController?new AbortController():null, t=setTimeout(function(){if(ctl)ctl.abort()},15000);
     fetch(f.action,{method:'POST',headers:{'Accept':'application/json'},body:d,signal:ctl?ctl.signal:undefined})
