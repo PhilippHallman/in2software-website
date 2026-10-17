@@ -487,6 +487,21 @@ footer .logo{color:#F3F6FC} footer a:hover{color:#fff}
 @media(prefers-reduced-motion:reduce){.cx-anim{animation:none}}
 @media(max-width:1060px){.cx-body{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.cx-side{display:none}}
 @media(max-width:720px){.cx-body{grid-template-columns:1fr;height:auto}.cx-chat{border-right:0;border-bottom:1px solid var(--c-line)}.cx-msgs{max-height:none;min-height:0}.cx-pane{min-height:0}.cx-modes{transform:none}.cx-path{display:none}.cx-steps{flex-direction:column;align-items:flex-start;gap:10px}}
+
+/* ---------- Referenz SocialScaleUp ---------- */
+.ref{padding-top:0;padding-bottom:56px}
+.ref-card{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 18px 50px rgba(20,50,90,.08)}
+.ref-shot{margin:0;background:#0B0B0C;padding:22px 22px 0}
+.ref-shot img{width:100%;height:auto;border-radius:12px 12px 0 0;display:block}
+.ref-shot figcaption{font:12.5px var(--mono);color:#8A8F99;padding:10px 0 12px}
+.ref-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:40px 44px 44px}
+.ref-cols h3{font-size:19px;margin-bottom:12px}
+.ref-cols ul{list-style:none;display:flex;flex-direction:column;gap:10px;color:var(--muted);font-size:16px}
+.ref-cols li{padding-left:18px;position:relative}.ref-cols li::before{content:"–";position:absolute;left:0;color:var(--dim)}
+.ref-foot{padding:16px 32px 26px;border-top:1px solid var(--line);margin-top:22px;display:flex;flex-direction:column;gap:8px}
+.ref-foot p{font-size:15px;color:var(--muted)}.ref-foot b{color:var(--text)}
+.ref-ad{font-size:13px!important;color:var(--dim)!important}
+@media(max-width:720px){.ref-cols{grid-template-columns:1fr;gap:26px;padding:28px 22px 30px}.ref-foot{padding:14px 20px 22px}.ref-shot{padding:12px 12px 0}}
 /* reveal */
 .js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
@@ -683,6 +698,41 @@ html{scroll-padding-top:80px}
   </div>
 </section>
 
+<!-- REFERENZ: SocialScaleUp (Stufe 0, ohne Zitat, ohne Zahlen) -->
+<section class="ref" id="referenz">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Aus der Praxis</span>
+      <h2>SocialScaleUp: KI-Profi – und trotzdem hing alles an einer Person.</h2>
+      <p class="lead">SocialScaleUp macht organischen Content für Unternehmer und Marken: Reels, Karussells, vom Dreh bis zum fertigen Post. Die Agentur arbeitet längst täglich mit KI.</p>
+    </div>
+    <div class="ref-card rv">
+      <figure class="ref-shot">
+        <img src="img/socialscaleup-os.webp" width="1400" height="771" alt="SocialScaleUp OS: Startseite mit Freigaben je Kunde, wartenden Kundenanfragen und To-dos – mit Testdaten" loading="lazy">
+        <figcaption>SocialScaleUp OS · Ansicht mit Testdaten</figcaption>
+      </figure>
+      <div class="ref-cols">
+        <div>
+          <h3>Vorher</h3>
+          <ul>
+            <li>Fast die ganze Arbeit lief schon über Claude, mit über 30 eigenen Skills.</li>
+            <li>Trotzdem ging jedes Skript, jede Caption, jede Freigabe über den Tisch des Inhabers.</li>
+            <li>Das Wissen steckte in langen Chats – ein Karussell-Chat lief seit vier Monaten.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Was wir gebaut haben</h3>
+          <ul>
+            <li>Das eigene Claude der Agentur hat zuerst die bisherigen Chats ausgewertet – lokal auf dem eigenen Rechner.</li>
+            <li>Auf den vorhandenen Skills aufgebaut statt sie zu ersetzen. Das Team arbeitet weiter wie gewohnt.</li>
+            <li>SocialScaleUp OS: was auf Freigabe wartet, welcher Kunde auf Antwort wartet, was heute dran ist.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 5 STUFEN -->
 <section id="stufen">
   <div class="wrap">
@@ -805,7 +855,7 @@ html{scroll-padding-top:80px}
       <details><summary>Was ist mit den Daten unserer Kunden?</summary><p>Claude läuft in eurem eigenen Team-Konto bei Anthropic, unter eurem Vertrag. Wir greifen nur auf das zu, was ihr freigebt, und schließen dafür vorher einen Auftragsverarbeitungsvertrag mit euch.</p></details>
       <details><summary>Was kostet das?</summary><p>Das sagen wir im Gespräch, wenn wir wissen, was bei euch gebaut werden soll. Bezahlt wird vor dem Aufbau, in einer Summe. Was ihr dafür bekommt, steht vorher schriftlich – mit Abnahmetests.</p></details>
       <details><summary>Ich bin allein. Passt das trotzdem?</summary><p>Wenn du laufend für sechs oder mehr Kunden Content machst: ja. Dann liegt das Kundenwissen nicht nur in deinem Kopf, und die Routine läuft über das System.</p></details>
-      <details><summary>Habt ihr Referenzen?</summary><p>Noch nicht. Wir sind am Anfang. Deshalb zeigen wir euch im Hebel-Check, wie wir selbst arbeiten, und legen vorher fest, woran ihr das Ergebnis messt.</p></details>
+      <details><summary>Habt ihr Referenzen?</summary><p>Eine: <a href="#referenz" style="text-decoration:underline">SocialScaleUp</a>. SocialScaleUp hat dafür nicht bezahlt – im Tausch dürfen wir zeigen, was wir gebaut haben. Gemessene Ergebnisse gibt es noch nicht; die zeigen wir, sobald sie da sind. Im Hebel-Check zeigen wir euch außerdem, wie wir selbst arbeiten.</p></details>
       <details><summary>Ihr arbeitet remote. Und wenn etwas hakt?</summary><p>Remote ist der Normalfall; für Termine vor Ort sind wir in Kiel. Nach der Abnahme läuft das System in eurem Claude-Konto. Ob und wie wir es danach betreuen, vereinbaren wir mit euch.</p></details>
     </div>
   </div>
